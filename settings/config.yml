@@ -1,0 +1,14 @@
+secret:
+  CONNECT_BASE_URL: 'https://connect.cloud.im'
+  CONNECT_API_URL: 'https://api.connect.cloud.im/public/v1'
+  CONNECT_TOKEN: ''
+  AUTH_TOKEN_VALIDITY: '10'
+  DEBUG: False
+  RECAPTCHA_SECRET: ''
+port: '8080'
+database: 'jdbc:postgresql://{host}/{db_name}?user={username}&password={password}'
+smtp-host: 'smtp.gmail.com'
+smtp-port: '465'
+smtp-encryption: 'ssl'
+smtp-username: '{username}'
+smtp-password: '{password}'

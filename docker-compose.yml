@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+  db:
+    image: postgres:11.5
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_PASSWORD: 1q2w3e
+      POSTGRES_DB: customer
+
+  app:
+    container_name: extension-customerportal
+    image: extension-customerportal
+    user: anvil
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    command: anvil-app-server --app . --data-dir /anvil-data --config-file /app/settings/config_temp.yml
+    depends_on:
+      - db
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+      - ./anvil-data:/anvil-data
+    environment:
+      MODE: local
+      POSTGRES_DB: usage

@@ -1,0 +1,25 @@
+container:
+  type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: none, spacing_above: none, col_widths: '{"VZIIMS":45,"RUQROY":15}',
+    spacing_below: none, background: 'theme:White'}
+  event_bindings: {}
+components:
+- type: ColumnPanel
+  properties: {role: fix-height, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: tiny, spacing_above: none, col_widths: '{}', spacing_below: none,
+    background: 'theme:White'}
+  name: control_panel
+  layout_properties: {grid_position: 'IIPUQR,VZIIMS', full_width_row: true, row_background: 'theme:Gray
+      200'}
+  components: []
+  event_bindings: {}
+- type: ColumnPanel
+  properties: {role: fix-height, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: none, spacing_above: none, col_widths: '', spacing_below: none,
+    background: 'theme:Gray 100'}
+  name: subscription_option_panel
+  layout_properties: {grid_position: 'IIPUQR,RUQROY', full_width_row: true, row_background: 'theme:Gray
+      200'}
+  event_bindings: {}
+is_package: true

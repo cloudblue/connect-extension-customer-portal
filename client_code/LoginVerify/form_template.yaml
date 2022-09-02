@@ -1,0 +1,155 @@
+container:
+  type: ColumnPanel
+  event_bindings: {show: form_show}
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: none, spacing_above: small, col_widths: '{"KAWKNN":15,"ISSOIE":14,"QWRGZL":31}',
+    spacing_below: small, background: ''}
+components:
+- type: Label
+  properties: {role: headline, align: center, tooltip: '', border: '', foreground: '',
+    visible: true, text: Verification Code, font_size: 28, font: '', spacing_above: large,
+    icon_align: left, spacing_below: none, italic: false, background: '', bold: true,
+    underline: false, icon: ''}
+  name: header_label
+  layout_properties: {grid_position: 'FCKRWH,ZRYNNM'}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: center, tooltip: '', border: '', foreground: '',
+    visible: true, text: An email with verification code was just sent to te******a@*****blue.com,
+    font_size: 16, font: '', spacing_above: none, icon_align: left, spacing_below: large,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: instruction_label
+  layout_properties: {grid_position: 'YRLOWX,TNPIXS'}
+  event_bindings: {}
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: large, col_widths: '', spacing_below: large,
+    background: ''}
+  name: column_panel_1
+  layout_properties: {grid_position: 'PJOUOB,KAWKNN', full_width_row: true}
+  event_bindings: {}
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: small, spacing_above: large, col_widths: '{}', spacing_below: large,
+    background: ''}
+  name: column_panel_3
+  layout_properties: {grid_position: 'PJOUOB,QWRGZL', full_width_row: true}
+  event_bindings: {}
+  components:
+  - type: TextBox
+    properties: {role: passcode-digit, align: center, hide_text: false, tooltip: '',
+      placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '',
+      font_size: null, font: '', spacing_above: large, type: tel, spacing_below: large,
+      italic: false, background: '', bold: false, underline: false}
+    name: pc_1
+    layout_properties: {grid_position: 'KVACUN,PESYRL'}
+    event_bindings: {}
+    data_bindings:
+    - {property: text, code: 'self.item[''pc_1'']', writeback: true}
+  - type: TextBox
+    properties: {role: passcode-digit, align: center, hide_text: false, tooltip: '',
+      placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '',
+      font_size: null, font: '', spacing_above: large, type: tel, spacing_below: large,
+      italic: false, background: '', bold: false, underline: false}
+    name: pc_2
+    layout_properties: {grid_position: 'KVACUN,DOSHAM'}
+    event_bindings: {}
+    data_bindings:
+    - {property: text, code: 'self.item[''pc_2'']', writeback: true}
+  - type: TextBox
+    properties: {role: passcode-digit, align: center, hide_text: false, tooltip: '',
+      placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '',
+      font_size: null, font: '', spacing_above: large, type: tel, spacing_below: large,
+      italic: false, background: '', bold: false, underline: false}
+    name: pc_3
+    layout_properties: {grid_position: 'KVACUN,LWLYDI'}
+    event_bindings: {}
+    data_bindings:
+    - {property: text, code: 'self.item[''pc_3'']', writeback: true}
+  - type: TextBox
+    properties: {role: passcode-digit, align: center, hide_text: false, tooltip: '',
+      placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '',
+      font_size: null, font: '', spacing_above: large, type: tel, spacing_below: large,
+      italic: false, background: '', bold: false, underline: false}
+    name: pc_4
+    layout_properties: {grid_position: 'KVACUN,BFJLIL'}
+    event_bindings: {}
+    data_bindings:
+    - {property: text, code: 'self.item[''pc_4'']', writeback: true}
+  - type: TextBox
+    properties: {role: passcode-digit, align: center, hide_text: false, tooltip: '',
+      placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '',
+      font_size: null, font: '', spacing_above: large, type: tel, spacing_below: large,
+      italic: false, background: '', bold: false, underline: false}
+    name: pc_5
+    layout_properties: {grid_position: 'KVACUN,NYONFM'}
+    event_bindings: {}
+    data_bindings:
+    - {property: text, code: 'self.item[''pc_5'']', writeback: true}
+  - type: TextBox
+    properties: {role: passcode-digit, align: center, hide_text: false, tooltip: '',
+      placeholder: '', border: '', enabled: true, foreground: '', visible: true, text: '',
+      font_size: null, font: '', spacing_above: large, type: tel, spacing_below: large,
+      italic: false, background: '', bold: false, underline: false}
+    name: pc_6
+    layout_properties: {grid_position: 'KVACUN,SQPTOV'}
+    event_bindings: {}
+    data_bindings:
+    - {property: text, code: 'self.item[''pc_6'']', writeback: true}
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: large, col_widths: '', spacing_below: large,
+    background: ''}
+  name: column_panel_2
+  layout_properties: {grid_position: 'PJOUOB,ISSOIE', full_width_row: true}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: center, tooltip: '', border: '', foreground: '',
+    visible: false, text: 'Haven’t received a code yet? ', font_size: 14, font: '',
+    spacing_above: large, icon_align: left, spacing_below: none, italic: false, background: '',
+    bold: false, underline: false, icon: ''}
+  name: resent_label
+  layout_properties: {grid_position: 'LLGEZZ,YSCDZB'}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: center, tooltip: '', border: '', foreground: '',
+    visible: false, text: 'You can request a new code after {timeout} seconds.', font_size: 14,
+    font: '', spacing_above: small, icon_align: left, spacing_below: large, italic: false,
+    background: '', bold: false, underline: false, icon: ''}
+  name: new_code_label
+  layout_properties: {grid_position: 'LGIUEN,GKWLZQ'}
+  event_bindings: {}
+- type: Link
+  properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
+    visible: false, text: Resend, font_size: 14, wrap_on: mobile, font: '', col_spacing: medium,
+    spacing_above: none, icon_align: left, col_widths: '{}', spacing_below: none,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: resent_link
+  layout_properties: {grid_position: 'MYQZQM,ALENIQ'}
+  event_bindings: {click: resent_link_click}
+  components: []
+- type: Button
+  properties: {role: primary-color, align: center, tooltip: '', border: '', enabled: false,
+    foreground: '', visible: true, text: Verify, font_size: 16, font: '', spacing_above: none,
+    icon_align: left, spacing_below: large, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: verify
+  layout_properties: {grid_position: 'ORNBRG,SIKSLO'}
+  event_bindings: {click: verify_click}
+- type: Label
+  properties: {role: null, align: center, tooltip: '', border: '', foreground: 'theme:Error',
+    visible: false, text: Invalid Code. Please try again., font_size: 14, font: '',
+    spacing_above: medium, icon_align: left, spacing_below: large, italic: false,
+    background: '', bold: false, underline: false, icon: ''}
+  name: validation_error_label
+  layout_properties: {grid_position: 'IUDUOB,XSMNGR'}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: center, tooltip: '', border: '', foreground: '',
+    visible: true, text: If you have any questions or need further assistance please contact us.,
+    font_size: 14, font: '', spacing_above: large, icon_align: left, spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: label_1
+  layout_properties: {grid_position: 'ROWBJL,SOZYAH'}
+  event_bindings: {}
+is_package: true

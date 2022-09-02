@@ -1,0 +1,86 @@
+dependencies: []
+services:
+- source: /runtime/services/tables.yml
+  client_config: {}
+  server_config: {auto_create_missing_columns: false}
+- source: /runtime/services/anvil/users.yml
+  client_config: {allow_signup: false, enable_automatically: true, use_email: false,
+    confirm_email: false, use_token: false}
+  server_config: {user_table: users}
+- source: /runtime/services/anvil/secrets.yml
+  client_config: {}
+  server_config: {}
+- source: /runtime/services/anvil/email.yml
+  client_config: {}
+  server_config: {}
+startup: {type: form, module: Login}
+package_name: Cloudblue_Connect_Customer_Portal
+allow_embedding: false
+name: Cloudblue Connect Customer Portal
+runtime_options: {version: 2, client_version: '3', server_version: python3-full, server_spec: null}
+metadata: {logo_img: 'asset:favicon-32x32.ico', title: Cloudblue Connect Customer Portal,
+  description: Cloudblue Connect Customer Portal}
+startup_form: Login
+native_deps: {head_html: '<script id="grecaptcha-script" src="https://www.google.com/recaptcha/api.js?render=6LfFqp4hAAAAABeyh3JeQnPNsT22DqFx_CIPAJUp"></script>'}
+db_schema:
+  users:
+    title: Users
+    client: none
+    server: full
+    columns:
+    - name: email
+      admin_ui: {width: 200}
+      type: string
+    - name: enabled
+      admin_ui: {width: 100}
+      type: bool
+    - name: last_login
+      admin_ui: {width: 200}
+      type: datetime
+  auth_tokens:
+    title: Auth Tokens
+    client: none
+    server: full
+    columns:
+    - name: user
+      admin_ui: {width: 200}
+      type: link_single
+      target: users
+    - name: token
+      admin_ui: {width: 200}
+      type: string
+    - name: valid_till
+      admin_ui: {width: 200}
+      type: datetime
+  accounts:
+    title: Accounts
+    client: none
+    server: full
+    columns:
+    - name: user
+      admin_ui: {width: 311}
+      type: link_single
+      target: users
+    - name: tier_id
+      admin_ui: {width: 200}
+      type: string
+secrets:
+  CONNECT_BASE_URL:
+    value: {? '' : +mZxXSFPj4sWh3Vn+L9d6l2pqT6JshXQL+r5F2dYwRQ746//QJasu8gtJHcNS+1BmBdkH7MhMTz7UF5quRppsIWx0OBmtpBVO6C2jhaQk4PFM/NJLTlg9Lk3Piz91+YuxlnBRXC7239Q21J0WLHnNP34HZoqrhPPcA==}
+    type: secret
+  CONNECT_TOKEN:
+    value: {? '' : VEp1MpB3sTfLFgMp4KqezmpAd1+KVoaoYDR1BXOOsXp2Ed9CoIQpgqdn+G2L5V9zc14cngUr1kh1MK2RJoraiq7Ml87832JJX8Ll/l+uX43Z2tQ7Ba3ph0fG+Ff+nFBRTeHjJ8kn4R2iXa5bTXnVVUfkYu1AWsV3bPPjWAUgDS9LtQwsKJXg+6PpSoiLseUAzgsEj3NLYHeIsWd4AQ==}
+    type: secret
+  CONNECT_API_URL:
+    value: {? '' : GuqPcP40ro4t/BaFqeLHtM8P9zZ03/SIL/Z92Ia9MyAAzzEtmLoUcHOoFksVE/86joDKXHvwQvqKw+f1TD4UgkhIITZM32ElyTY9OpEBrJ5zJkhfaDpXsgLc3UXv6iIuCqmrjmUtt7rHtOxav8/kncVMgpqvrRGQVqOFIDHZdlaOe5EQEUVsBzc=}
+    type: secret
+  AUTH_TOKEN_VALIDITY:
+    value: {? '' : a4c52YBzQHYbG+AoxyXVP2uw2UvZp4clAsvWGFr0CH8z0XA8K7Np6mGyXVH92LrJqFeL6a5l05fKNFsbPKS6jqkvN190NfQCwy9xhI3oluhdC/1bN1Rk14tduuS4QC9eyw==}
+    type: secret
+  DEBUG:
+    value: {? '' : EjL47R5UN0cpWVU6GwH2WUeRNRioiqA9JtmnlOlZ6S+zZFfl63btpvOM764OZ3F8pFK+EjkSW3DKBQAyItjRrA7D3ILTB2xLOcdnm4caeBQUipg3lNSQYmMzi/rbbLZfrtfTFg==}
+    type: secret
+  RECAPCHA_SECRET:
+    value: {? '' : f8rISFwdIb5zUF/3MZGQ7KxPFZOPHhcC4W5ctyXCPtEB3gIOZziFsvsFoas1wmRFrOQgw/TZ8TOKa91gs5KbYfF++wtQB8XFuJ4jbn32Ho2I7pcGFXJhr2jlKFcNq+jTC/lqxj7HeketAGdIHIOH+CIQ2XgZuZ65sfzOQyoYI5LbP4dwiBQ+}
+    type: secret
+renamed: true
