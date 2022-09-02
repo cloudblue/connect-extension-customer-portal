@@ -19,7 +19,7 @@ services:
     build:
       context: .
       dockerfile: dev.Dockerfile
-    command: anvil-app-server --app . --data-dir /anvil-data --config-file /app/settings/config_temp.yml
+    command: anvil-app-server --app . --data-dir /anvil-data --config-file /app/settings/config.yml
     depends_on:
       - db
     ports:
