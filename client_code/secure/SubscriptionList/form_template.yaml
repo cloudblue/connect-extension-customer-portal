@@ -1,0 +1,71 @@
+container:
+  type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: none,
+    background: ''}
+  event_bindings: {}
+components:
+- type: FlowPanel
+  properties: {role: scrollable, spacing: none, align: center, tooltip: '', border: '',
+    foreground: '', visible: true, spacing_above: none, spacing_below: none, background: ''}
+  name: flow_panel_1
+  layout_properties: {grid_position: 'IXOTSC,AYQGUK', full_width_row: true}
+  components:
+  - type: Spacer
+    properties: {visible: true, spacing_above: small, spacing_below: small, height: '50',
+      tooltip: ''}
+    name: spacer_1
+    layout_properties: {width: 26, expand: false}
+  - type: ColumnPanel
+    properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+      wrap_on: never, col_spacing: none, spacing_above: none, col_widths: '{}', spacing_below: none,
+      background: ''}
+    name: column_panel_1
+    layout_properties: {width: null, expand: true}
+    components:
+    - type: Label
+      properties: {role: table-title, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Subscription List, font_size: 16, font: '', spacing_above: large,
+        icon_align: left, spacing_below: none, italic: false, background: 'theme:Gray
+          350', bold: true, underline: false, icon: ''}
+      name: label_1
+      layout_properties: {grid_position: 'MELZKT,QGEWEL', full_width_row: true, expand: true,
+        width: null}
+      event_bindings: {}
+    - type: DataGrid
+      properties:
+        role: null
+        columns:
+        - {id: HBHSXQ, title: Subscription ID, data_key: id}
+        - {id: EIJVAQ, title: Status, data_key: status}
+        - {id: ZFRLSM, title: External ID, data_key: external_id, expand: false}
+        - {id: VBEXZA, title: '', data_key: view_details}
+        auto_header: true
+        tooltip: ''
+        border: ''
+        foreground: ''
+        rows_per_page: 5
+        visible: true
+        wrap_on: never
+        show_page_controls: true
+        spacing_above: none
+        spacing_below: small
+        background: theme:White
+      name: subscription_list_table
+      layout_properties: {grid_position: 'BPSIIH,OMZAZQ', full_width_row: true}
+      components:
+      - type: RepeatingPanel
+        properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+          visible: true, spacing_above: small, spacing_below: small, item_template: secure.SubscriptionList.SubscriptionRowTemplate,
+          background: ''}
+        name: subscription_repeating_panel
+        layout_properties: {}
+        event_bindings: {}
+      event_bindings: {}
+  - type: Spacer
+    properties: {visible: true, spacing_above: none, spacing_below: none, height: '50',
+      tooltip: ''}
+    name: spacer_2
+    layout_properties: {grid_position: 'IXOTSC,ELRBGT', full_width_row: true, width: 26,
+      expand: false}
+is_package: true

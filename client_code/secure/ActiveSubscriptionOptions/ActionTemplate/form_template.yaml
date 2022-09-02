@@ -1,0 +1,18 @@
+container:
+  type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: none, spacing_above: small, col_widths: '{}', spacing_below: small,
+    background: ''}
+  event_bindings: {}
+components:
+- type: Link
+  properties: {role: action-button, url: '', align: center, tooltip: '', border: '',
+    foreground: '', visible: true, text: '', font_size: null, wrap_on: mobile, font: '',
+    col_spacing: small, spacing_above: small, icon_align: left, col_widths: '', spacing_below: small,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: action_link
+  layout_properties: {grid_position: 'FXDRDR,HVSSOJ'}
+  data_bindings:
+  - {property: text, code: 'self.item[''name'']'}
+  event_bindings: {click: action_link_click}
+is_package: true

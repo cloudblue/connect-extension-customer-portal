@@ -1,0 +1,73 @@
+container:
+  type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: tiny, spacing_above: none, col_widths: '{"QXEBKA":5,"LUGLTQ":55}',
+    spacing_below: none, background: ''}
+  event_bindings: {show: form_show}
+components:
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_1
+  layout_properties: {grid_position: 'MWSNQF,QXEBKA'}
+  event_bindings: {}
+- type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: medium, spacing_above: large, col_widths: '{}', spacing_below: large,
+    background: ''}
+  name: column_panel_1
+  layout_properties: {grid_position: 'MWSNQF,LUGLTQ'}
+  components:
+  - type: FlowPanel
+    properties: {}
+    name: action_panel
+    layout_properties: {grid_position: 'SUPJYR,URJKLL'}
+    components:
+    - type: RepeatingPanel
+      properties: {role: horizontal-repeater, tooltip: '', border: '', foreground: '',
+        items: null, visible: true, spacing_above: small, spacing_below: small, item_template: secure.ActiveSubscriptionOptions.ActionTemplate,
+        background: ''}
+      name: action_repeating_panel
+      layout_properties: {width: null, expand: true}
+      event_bindings: {}
+    event_bindings: {}
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    name: document_links_panel
+    layout_properties: {grid_position: 'WWUXZX,DYZQTP'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Documents, font_size: 16, font: Roboto, spacing_above: none,
+        icon_align: left, spacing_below: none, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: documents_link
+      layout_properties: {grid_position: 'FBCWPY,JPRTPH'}
+      event_bindings: {}
+    - type: RepeatingPanel
+      properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+        visible: true, spacing_above: small, spacing_below: small, item_template: secure.ActiveSubscriptionOptions.LinkTemplate,
+        background: ''}
+      name: document_link_repeating_panel
+      layout_properties: {grid_position: 'AYDSBO,CJWRPP'}
+      event_bindings: {}
+  - type: ColumnPanel
+    properties: {col_widths: '{}'}
+    name: download_links_panel
+    layout_properties: {grid_position: 'EKTODJ,LVJFMB'}
+    components:
+    - type: Label
+      properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+        visible: true, text: Downloads, font_size: 16, font: Roboto, spacing_above: none,
+        icon_align: left, spacing_below: none, italic: false, background: '', bold: true,
+        underline: false, icon: ''}
+      name: downloads_label
+      layout_properties: {grid_position: 'GZXYGC,ACZHEB'}
+    - type: RepeatingPanel
+      properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
+        visible: true, spacing_above: small, spacing_below: small, item_template: secure.ActiveSubscriptionOptions.LinkTemplate,
+        background: ''}
+      name: download_link_repeating_panel
+      layout_properties: {grid_position: 'DRNKDD,XWSUIR'}
+      event_bindings: {}
+  event_bindings: {}
+is_package: true

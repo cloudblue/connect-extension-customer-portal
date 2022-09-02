@@ -1,0 +1,2 @@
+anvil-app-server==1.7.3
+connect-openapi-client==25.8

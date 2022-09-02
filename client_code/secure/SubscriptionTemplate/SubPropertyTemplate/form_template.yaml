@@ -1,0 +1,25 @@
+container:
+  type: DataRowPanel
+  event_bindings: {}
+components:
+- type: Label
+  properties: {role: subheading, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: '', font_size: null, font: '14', spacing_above: none, icon_align: left,
+    spacing_below: none, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: property
+  layout_properties: {column: IUVRDM}
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''property'']'}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: '', font_size: null, font: '14', spacing_above: medium, icon_align: left,
+    spacing_below: none, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: value
+  layout_properties: {column: MHLWMD}
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''value'']'}
+is_package: true
