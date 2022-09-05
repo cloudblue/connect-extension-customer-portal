@@ -5,12 +5,13 @@ from .connect.client import ConnectClient
 from .utils import handle_response
 
 
-def invent_inuqering_status(subscription):
+def invent_inquiring_status(subscription):
     if 'pending_request' in subscription and subscription[
       'pending_request']['status'] == 'inquiring':
         subscription['status'] = 'inquiring'
     
     return subscription
+
 
 def cache_subscription_data():
     connect_client = ConnectClient()
@@ -21,11 +22,12 @@ def cache_subscription_data():
         tier_ids = [account['tier_id'] for account in accounts]
 
         subscriptions = connect_client.get_assets_for_customers(tier_ids)
-        server.session['subscriptions'] = [invent_inuqering_status(subscription) for subscription in subscriptions]
+        server.session['subscriptions'] = [invent_inquiring_status(subscription) for subscription in subscriptions]
 
-        product_id_list = {subscription['product']['id'] for subscription in subscriptions}
-        products = connect_client.get_product_list(product_id_list)
-        server.session['products'] = list(products)
+        if server.session['subscriptions']:
+            product_id_list = {subscription['product']['id'] for subscription in subscriptions}
+            products = connect_client.get_product_list(product_id_list)
+            server.session['products'] = list(products)
 
 
 @server.callable(require_user=True)
