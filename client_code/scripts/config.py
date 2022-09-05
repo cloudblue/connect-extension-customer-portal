@@ -1,1 +1,1 @@
-RECAPCHA_SITE_KEY = '6LfFqp4hAAAAABeyh3JeQnPNsT22DqFx_CIPAJUp'
+RECAPCHA_SITE_KEY = '{recaptcha_client_key}'
