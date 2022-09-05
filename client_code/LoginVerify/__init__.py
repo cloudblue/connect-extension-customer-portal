@@ -1,5 +1,5 @@
 from ._anvil_designer import LoginVerifyTemplate
-from ..scripts.recapcha import enforce_recapcha
+from ..scripts.recaptcha import enforce_recaptcha
 from ..scripts.client import (
     initiate_auth,
     validate_token,
@@ -89,9 +89,9 @@ class LoginVerify(LoginVerifyTemplate):
               timeout,
             )
 
-    @enforce_recapcha
-    def verify_click(self, recapcha_token, **event_args):
-        result = validate_token(self.email, self.get_passcode(), recapcha_token)
+    @enforce_recaptcha
+    def verify_click(self, recaptcha_token, **event_args):
+        result = validate_token(self.email, self.get_passcode(), recaptcha_token)
 
         if result:
             open_form('secure.Home')
@@ -131,14 +131,14 @@ class LoginVerify(LoginVerifyTemplate):
         self.pc_1.focus()
         window.setTimeout(self.handle_resend_otp, 30000)
 
-    @enforce_recapcha
-    def resent_link_click(self, recapcha_token, **event_args):
+    @enforce_recaptcha
+    def resent_link_click(self, recaptcha_token, **event_args):
         self.new_code_label.visible = False
         self.resent_link.visible = False
         self.resent_label.visible = False
         self.validation_error_label.visible = False
         self.resent_otp_timeout = None
-        initiate_auth(self.email, recapcha_token)
+        initiate_auth(self.email, recaptcha_token)
         self.clear_passcode()
         self.pc_1.focus()
         window.setTimeout(self.handle_resend_otp, 30000)

@@ -22,20 +22,21 @@ def __get_param_value(param_name, func, args, kwargs):
 
     return param_value
 
-def ensure_recapcha(func):
+
+def ensure_recaptcha(func):
     @wraps(func)
     def wrap(*args, **kwargs):
-        recapcha_token = __get_param_value('recapcha_token', func, args, kwargs)
-        recapcha_secret = secrets.get_secret('RECAPCHA_SECRET')
+        recaptcha_token = __get_param_value('recaptcha_token', func, args, kwargs)
+        recaptcha_secret = secrets.get_secret('RECAPTCHA_SECRET')
         response = http.request(    
-            url=f'https://www.google.com/recaptcha/api/siteverify?secret={recapcha_secret}&response={recapcha_token}',
+            url=f'https://www.google.com/recaptcha/api/siteverify?secret={recaptcha_secret}&response={recaptcha_token}',
             method='POST',
             json=True,
         )
         if response and 'success' in response and response['success']:
             return func(*args, **kwargs)
         else:
-            raise Exception('Failed recapcha validation.')
+            raise Exception('Failed recaptcha validation.')
 
     return wrap
 

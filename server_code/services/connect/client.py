@@ -24,7 +24,7 @@ class ConnectClient:
             '-params',
             '-tiers',
             '-configuration',
-            #'+pending_request',
+            '+pending_request',
         )
 
     def get_product_list(self, product_id_list):

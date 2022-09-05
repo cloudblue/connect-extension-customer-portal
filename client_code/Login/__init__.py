@@ -4,7 +4,7 @@ from ._anvil_designer import LoginTemplate
 from ..LoginVerify import LoginVerify
 from ..scripts.client import initiate_auth
 from ..scripts.view import set_opacity
-from ..scripts.recapcha import enforce_recapcha
+from ..scripts.recaptcha import enforce_recaptcha
 
 
 from anvil import *
@@ -22,14 +22,14 @@ class Login(LoginTemplate):
     # Set Form properties and Data Bindings.
     self.init_components(**properties)
 
-  @enforce_recapcha
-  def continue_button_click(self, recapcha_token, **event_args):
+  @enforce_recaptcha
+  def continue_button_click(self, recaptcha_token, **event_args):
       
       email = self.item['email'].strip()
       
       if self.validate_email(email):
           self.error_label.visible = False
-          result = initiate_auth(email, recapcha_token)
+          result = initiate_auth(email, recaptcha_token)
           if result:
               login_verify_form = LoginVerify(email)
               self.content_panel.clear()

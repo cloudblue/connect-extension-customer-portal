@@ -1,12 +1,12 @@
 secret:
-  CONNECT_BASE_URL: 'https://connect.cloud.im'
-  CONNECT_API_URL: 'https://api.connect.cloud.im/public/v1'
+  CONNECT_BASE_URL: 'https://portal.cnct.info'
+  CONNECT_API_URL: 'https://api.cnct.info/public/v1'
   CONNECT_TOKEN: ''
   AUTH_TOKEN_VALIDITY: '10'
-  DEBUG: False
+  DEBUG: 'False'
   RECAPTCHA_SECRET: ''
 port: '8080'
-database: 'jdbc:postgresql://{host}/{db_name}?user={username}&password={password}'
+database: 'jdbc:postgresql://db/customer?user=postgres&password=1q2w3e'
 smtp-host: 'smtp.gmail.com'
 smtp-port: '465'
 smtp-encryption: 'ssl'
