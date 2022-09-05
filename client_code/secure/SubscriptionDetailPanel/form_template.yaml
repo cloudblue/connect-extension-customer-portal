@@ -6,13 +6,24 @@ container:
   event_bindings: {}
 components:
 - type: ColumnPanel
-  properties: {role: fix-height, tooltip: '', border: '', foreground: '', visible: true,
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
     wrap_on: never, col_spacing: tiny, spacing_above: none, col_widths: '{}', spacing_below: none,
     background: 'theme:White'}
   name: control_panel
   layout_properties: {grid_position: 'IIPUQR,VZIIMS', full_width_row: true, row_background: 'theme:Gray
       200'}
-  components: []
+  components:
+  - type: form:secure.HaltedSubscriptionTemplate
+    properties: {subscription_status: null, show_back_button: false, terminated_msg: 'Sorry,
+        this service has been terminated. Go to your account to manage your subscriptions.',
+      suspended_msg: 'Sorry, this service is unavailable at the moment.', extend_height_to_page_end: true,
+      visible: false}
+    name: halted_subscription_template
+    layout_properties: {grid_position: 'ZZDYOU,HHWHTB', full_width_row: true}
+    event_bindings: {back_button_click: halted_subscription_template_back_button_click}
+    data_bindings:
+    - {property: subscription_status, code: 'self.subscription[''status'']'}
+    - {property: show_back_button, code: self.multi_subscription}
   event_bindings: {}
 - type: ColumnPanel
   properties: {role: fix-height, tooltip: '', border: '', foreground: '', visible: true,

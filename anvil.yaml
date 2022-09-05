@@ -21,7 +21,7 @@ runtime_options: {version: 2, client_version: '3', server_version: python3-full,
 metadata: {logo_img: 'asset:favicon-32x32.ico', title: Cloudblue Connect Customer Portal,
   description: Cloudblue Connect Customer Portal}
 startup_form: Login
-native_deps: {head_html: '<script id="grecaptcha-script" src="https://www.google.com/recaptcha/api.js?render=6LfFqp4hAAAAABeyh3JeQnPNsT22DqFx_CIPAJUp"></script>'}
+native_deps: {head_html: '<script id="grecaptcha-script" src="https://www.google.com/recaptcha/api.js?render={recaptcha_client_key}"></script>'}
 db_schema:
   users:
     title: Users

@@ -13,7 +13,7 @@ import math
 import random
 
 from .connect.client import ConnectClient
-from .recapcha import ensure_recapcha
+from .recaptcha import ensure_recaptcha
 from .subscription import cache_subscription_data
 from .utils import handle_response
 
@@ -33,17 +33,13 @@ def clean_tokens(user):
         token.delete()
 
 
-def generate_and_send_token(user, existing_token=None):
-    token = None
-    if not existing_token:
-            token = generate_token()
-            existing_token = app_tables.auth_tokens.add_row(
-                token=token,
-                user=user,
-                valid_till=datetime.now() + timedelta(minutes=int(secrets.get_secret('AUTH_TOKEN_VALIDITY'))),
-            )
-    else:
-        token = existing_token['token']
+def generate_and_send_token(user):
+    token = generate_token()
+    app_tables.auth_tokens.add_row(
+        token=token,
+        user=user,
+        valid_till=datetime.now() + timedelta(minutes=int(secrets.get_secret('AUTH_TOKEN_VALIDITY'))),
+    )
 
     email.send(
         from_name='Sample Application',
@@ -65,15 +61,27 @@ def find_and_store_user(email):
         return None
 
 
+def update_accounts(user):
+    connect_client = ConnectClient()
+    accounts = list(connect_client.list_tier_accounts(user['email']))
+    if accounts:
+        for account in accounts:
+            db_account = app_tables.accounts.search(user=user, tier_id=account['id'])
+            if not db_account:
+                app_tables.accounts.add_row(user=user, tier_id=account['id'])
+
+
 @server.callable
 @in_transaction
 @handle_response
-@ensure_recapcha
-def initiate_auth(email, recapcha_token):
+@ensure_recaptcha
+def initiate_auth(email, recaptcha_token):
     user = app_tables.users.get(email=email, enabled=True)
       
     if not user:
-        user = None #find_and_store_user(email) TODO uncomment it when changes in devport are ready
+        user = find_and_store_user(email)
+    else:
+        update_accounts(user)
 
     if user:
         clean_tokens(user)
@@ -85,8 +93,8 @@ def initiate_auth(email, recapcha_token):
 @server.callable
 @in_transaction
 @handle_response
-@ensure_recapcha
-def validate_token(email, token, recapcha_token):
+@ensure_recaptcha
+def validate_token(email, token, recaptcha_token):
     user = app_tables.users.get(email=email, enabled=True)
     if user:
         token = app_tables.auth_tokens.get(user=user, token=token)

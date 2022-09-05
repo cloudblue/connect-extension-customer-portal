@@ -21,14 +21,14 @@ def handle_server_response(show_alert=True):
   
 @handle_auth_error
 @handle_server_response()
-def initiate_auth(email, recapcha_token):
-    return server.call('initiate_auth', email, recapcha_token)
+def initiate_auth(email, recaptcha_token):
+    return server.call('initiate_auth', email, recaptcha_token)
 
 
 @handle_auth_error
 @handle_server_response(show_alert=False)
-def validate_token(email, passcode, recapcha_token):
-    return server.call('validate_token', email, passcode, recapcha_token)
+def validate_token(email, passcode, recaptcha_token):
+    return server.call('validate_token', email, passcode, recaptcha_token)
     
 
 @handle_auth_error
