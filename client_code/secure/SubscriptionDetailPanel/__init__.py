@@ -1,18 +1,7 @@
 from ._anvil_designer import SubscriptionDetailPanelTemplate
 from ..ActiveSubscriptionOptions import ActiveSubscriptionOptions
-from ..HaltedSubscriptionTemplate import HaltedSubscriptionTemplate
 from ..Status import Status, status_map
 from ..SubscriptionTemplate import SubscriptionTemplate
-from ...scripts.view import (
-    set_com_height_to_window_end,
-)
-
-
-def fix_height(component):
-    def handler(**event_args):
-        set_com_height_to_window_end(component)
-
-    return handler
 
 
 class SubscriptionDetailPanel(SubscriptionDetailPanelTemplate):
@@ -32,19 +21,11 @@ class SubscriptionDetailPanel(SubscriptionDetailPanelTemplate):
                 full_width_row=True,
             )
 
-    def populate_template(self, page, subscription, multi_subscription):
-        self.control_panel.clear()
+    def populate_template(self, subscription):
         if subscription['status'] in ['suspended', 'terminated']:
-            self.control_panel.add_component(
-                HaltedSubscriptionTemplate(
-                    page,
-                    self.product,
-                    self.subscription,
-                    multi_subscription,
-                ),
-                full_width_row=True,
-            )
+            self.halted_subscription_template.visible = True
         else:
+            self.halted_subscription_template.visible = False
             self.control_panel.add_component(
                 SubscriptionTemplate(self.subscription),
                 full_width_row=True,
@@ -53,10 +34,16 @@ class SubscriptionDetailPanel(SubscriptionDetailPanelTemplate):
     def __init__(self, page, product, subscription, multi_subscription, **properties):
         self.product = product
         self.subscription = subscription
+        self.multi_subscription = multi_subscription
+        self.page = page
+        self.halted_subscription_template.visible = False
 
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
         # Any code you write here will run when the form opens.
         self.populate_option_panel(product, subscription)
-        self.populate_template(page, subscription, multi_subscription)
+        self.populate_template(subscription)
+
+    def halted_subscription_template_back_button_click(self, **event_args):
+        self.page.select_product(self.product)
