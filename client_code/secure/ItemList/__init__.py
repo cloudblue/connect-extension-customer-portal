@@ -1,10 +1,27 @@
 from ._anvil_designer import ItemListTemplate
+
+
 class ItemList(ItemListTemplate):
-    def __init__(self, items, **properties):
+    def __init__(self, **properties):
         # Set Form properties and Data Bindings.
-        self.items = items
+        self.subscription_items = properties.get('subscription_items')
+        self.header = properties.get('header')
 
         self.init_components(**properties)
 
-        # Any code you write here will run when the form opens.
-        self.item_repeating_panel.items = items
+    @property
+    def subscription_items(self):
+        return self._subscription_items
+
+    @subscription_items.setter
+    def subscription_items(self, value):
+        self.item_repeating_panel.items = value
+        self._subscription_items = value
+
+    @property
+    def header(self):
+        return self._header
+
+    @header.setter
+    def header(self, value):
+        self._header = value
