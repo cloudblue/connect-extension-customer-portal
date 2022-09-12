@@ -59,3 +59,7 @@ container:
     spacing_below: none, background: ''}
   event_bindings: {}
 is_package: true
+custom_component: true
+properties:
+- {name: subscription_items, type: object, default_value: null, default_binding_prop: true}
+- {name: header, type: string, default_value: Items}

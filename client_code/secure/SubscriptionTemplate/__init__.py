@@ -10,24 +10,23 @@ from ...scripts.view import (
 
 
 class SubscriptionTemplate(SubscriptionTemplateTemplate):
-        
-    def __init__(self, subscription, **properties):
-        # Set Form properties and Data Bindings.
-        self.init_components(**properties)
 
-        # Any code you write here will run when the form opens.
+    def __init__(self, subscription, **properties):
         if 'template' not in subscription.keys():
             subscription['template'] = get_activation_template(subscription['id'])
 
         self.item = subscription
-        
+
         if subscription['status'] in ['active', 'terminating']:
-            self.items_panel.add_component(
-                ItemList(subscription['items']),
-                full_width_row=True,
-            )
+            self.items_panel.visible = True
+
+        # Set Form properties and Data Bindings.
+        self.init_components(**properties)
+
+        # Any code you write here will run when the form opens.
+
         make_target_new_tab(self.content)
-        
+
         if is_debug():
             self.sub_property_repeating_panel.items = normalized_object(subscription)
             self.subscription_properties_label.visible = True
