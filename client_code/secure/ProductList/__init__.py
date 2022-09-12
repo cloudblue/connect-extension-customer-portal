@@ -1,37 +1,37 @@
 from ._anvil_designer import ProductListTemplate
 from ..ProductCard import ProductCard
-from ...scripts.client import get_connect_base_url, list_products
-
-
-def cut_short(value, size):
-    return (value[0:(size - 3)] + '...') if len(value) > size else value
-
-
-def prepare(portal_url, product):
-    product['vendor'] = f"by {product['owner']['name']}"
-    product['icon'] = f"{portal_url}{product['icon']}"
-
-    product['minimize_short_description'] = cut_short(
-        product['short_description'],
-        135,
-    )
-
-    product['minimize_name'] = cut_short(product['name'], 25)
-
-    return product
+from ..ProductDetailPanel import ProductDetailPanel
+from ...scripts.client import list_products
 
 
 class ProductList(ProductListTemplate):
+    def show_product_details(self, product, **event_args):
+        if not self.page.product_detail_panel:
+            self.page.product_detail_panel = ProductDetailPanel(
+                self.page,
+                product,
+                self.products,
+            )
+        else:
+            self.page.product_detail_panel.select_product(product)
+        
+        self.page.clear()
+        self.page.add_component(
+            self.page.product_detail_panel,
+            full_width_row=True,
+        )
+
     def __init__(self, page, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
-
         self.page = page
-        self.portal_url = get_connect_base_url()
 
-        products = list_products()
-        if products:
-            for product in products:
-                product_card = ProductCard(page, product, products)
-                product_card.item = prepare(self.portal_url, product)
+        self.products = list_products()
+        if self.products:
+            for product in self.products:
+                product_card = ProductCard(product=product)
+                product_card.add_event_handler(
+                  'show_detail',
+                  self.show_product_details,
+                )
                 self.product_list_flow_panel.add_component(product_card)

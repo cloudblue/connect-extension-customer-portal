@@ -80,7 +80,7 @@ secrets:
   DEBUG:
     value: {? '' : EjL47R5UN0cpWVU6GwH2WUeRNRioiqA9JtmnlOlZ6S+zZFfl63btpvOM764OZ3F8pFK+EjkSW3DKBQAyItjRrA7D3ILTB2xLOcdnm4caeBQUipg3lNSQYmMzi/rbbLZfrtfTFg==}
     type: secret
-  RECAPCHA_SECRET:
+  RECAPTCHA_SECRET:
     value: {? '' : f8rISFwdIb5zUF/3MZGQ7KxPFZOPHhcC4W5ctyXCPtEB3gIOZziFsvsFoas1wmRFrOQgw/TZ8TOKa91gs5KbYfF++wtQB8XFuJ4jbn32Ho2I7pcGFXJhr2jlKFcNq+jTC/lqxj7HeketAGdIHIOH+CIQ2XgZuZ65sfzOQyoYI5LbP4dwiBQ+}
     type: secret
 renamed: true

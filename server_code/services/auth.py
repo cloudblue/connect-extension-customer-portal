@@ -66,7 +66,7 @@ def update_accounts(user):
     accounts = list(connect_client.list_tier_accounts(user['email']))
     if accounts:
         for account in accounts:
-            db_account = app_tables.accounts.search(user=user, tier_id=account['id'])
+            db_account = app_tables.accounts.get(user=user, tier_id=account['id'])
             if not db_account:
                 app_tables.accounts.add_row(user=user, tier_id=account['id'])
 

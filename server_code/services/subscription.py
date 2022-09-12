@@ -18,16 +18,21 @@ def cache_subscription_data():
     user = users.get_user()
 
     if user:
+        server.session['subscriptions'] = []
+        server.session['products'] = []
+
         accounts = app_tables.accounts.search(user=user)
         tier_ids = [account['tier_id'] for account in accounts]
 
-        subscriptions = connect_client.get_assets_for_customers(tier_ids)
+        subscriptions = list(connect_client.get_assets_for_customers(tier_ids))
         server.session['subscriptions'] = [invent_inquiring_status(subscription) for subscription in subscriptions]
 
-        if server.session['subscriptions']:
-            product_id_list = {subscription['product']['id'] for subscription in subscriptions}
-            products = connect_client.get_product_list(product_id_list)
-            server.session['products'] = list(products)
+        if subscriptions:
+            product_id_list = [subscription['product']['id'] for subscription in subscriptions]
+
+            if product_id_list:
+                products = connect_client.get_product_list(product_id_list)
+                server.session['products'] = list(products)
 
 
 @server.callable(require_user=True)

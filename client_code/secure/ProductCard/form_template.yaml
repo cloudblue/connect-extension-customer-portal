@@ -1,8 +1,13 @@
-container:
-  type: ColumnPanel
-  properties: {col_widths: '{}'}
-  data_bindings: []
-  event_bindings: {}
+properties:
+- {name: product, type: object, default_value: null, default_binding_prop: true}
+is_package: true
+events:
+- name: show_detail
+  default_event: true
+  description: Click event on show details link on the product card.
+  parameters:
+  - {name: product, description: Product for which show detail event has been generated.}
+custom_component: true
 components:
 - type: ColumnPanel
   properties: {role: card, tooltip: '', border: '', foreground: '', visible: true,
@@ -19,7 +24,8 @@ components:
     name: product_icon
     layout_properties: {grid_position: 'APOLVB,MLRXTY'}
     data_bindings:
-    - {property: source, code: 'self.item[''icon'']'}
+    - {property: source, code: 'self.product[''icon'']'}
+    event_bindings: {}
   - type: Label
     properties: {role: headline, align: center, tooltip: '', border: '', foreground: '',
       visible: true, text: '', font_size: 18, font: '', spacing_above: none, icon_align: left,
@@ -28,7 +34,7 @@ components:
     name: product_name
     layout_properties: {grid_position: 'ZOQUMF,UFDLQC'}
     data_bindings:
-    - {property: text, code: 'self.item[''minimize_name'']'}
+    - {property: text, code: 'self.product[''minimize_name'']'}
     event_bindings: {}
   - type: Label
     properties: {role: text, align: center, tooltip: '', border: '', foreground: '',
@@ -38,7 +44,7 @@ components:
     name: vendor
     layout_properties: {grid_position: 'RFEUPR,NAKFSQ'}
     data_bindings:
-    - {property: text, code: 'self.item[''vendor'']'}
+    - {property: text, code: 'self.product[''vendor'']'}
     event_bindings: {}
   - type: Label
     properties: {role: null, align: center, tooltip: '', border: '', foreground: '',
@@ -50,7 +56,7 @@ components:
     name: product_details
     layout_properties: {grid_position: 'QEIREF,CNBLLK'}
     data_bindings:
-    - {property: text, code: 'self.item[''minimize_short_description'']'}
+    - {property: text, code: 'self.product[''minimize_short_description'']'}
     event_bindings: {}
   - type: Link
     properties: {role: null, url: '', align: center, tooltip: '', border: '', foreground: '',
@@ -61,4 +67,9 @@ components:
     layout_properties: {grid_position: 'LJFMVV,ZUJFAL', full_width_row: false}
     data_bindings: []
     event_bindings: {click: lnk_view_more_click}
-is_package: true
+  event_bindings: {}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+  data_bindings: []
+  event_bindings: {}
