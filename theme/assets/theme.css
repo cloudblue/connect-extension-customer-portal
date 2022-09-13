@@ -809,12 +809,12 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
 */
 
 .content .anvil-measure-this {
-  padding-bottom: 0px; /* Embedding is not needed for this app */
+  padding-bottom: 0; /* Embedding is not needed for this app */
 }
 
 .anvil-panel-col {
-  padding-bottom: 0px;
-  margin-bottom: 0px;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 .anvil-role-top-icon {
@@ -893,7 +893,7 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
 
 .anvil-role-table-title {
   padding: 2px 24px;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 0 0;
 }
 
 .anvil-role-light-text {
@@ -934,7 +934,6 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
 .anvil-role-scrollable {}
 
 .anvil-role-status-complete, .anvil-role-status-in_progress, .anvil-role-status-pending {
-  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -992,7 +991,7 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
 	border-radius: 20px;
   	min-width: 120px;
   	color: White;
-  	margin: 0px 5px;
+  	margin: 0 5px;
 }
 
 .anvil-role-action-button:hover, .anvil-role-action-button:active, .anvil-role-action-button:focus {
@@ -1014,8 +1013,7 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
 .anvil-role-passcode-digit {
   	width: 40px;
   	height: 40px!important;
-	margin: 25px auto 0px auto;
-	font-family: Robot;
+	margin: 25px auto 0 auto;
 	font-size: 1.1rem;
   	border-radius: 5px!important;
 	border: 1px solid #ccc!important;
@@ -1029,8 +1027,8 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
 }
 
 .anvil-role-together {
-  margin-left: 0px;
-  margin-right: 0px;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 .anvil-role-side-menu {
