@@ -7,11 +7,19 @@ container:
 components:
 - type: ColumnPanel
   properties: {role: side-menu, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: none, spacing_above: medium, col_widths: '', spacing_below: none,
+    wrap_on: mobile, col_spacing: none, spacing_above: medium, col_widths: '{}', spacing_below: none,
     background: 'theme:Gray 100'}
   name: left_menu
   layout_properties: {grid_position: 'AEJLVZ,TTWNTB', full_width_row: true}
   event_bindings: {show: left_menu_show}
+  components:
+  - type: form:secure.ProductListMenu
+    properties: {}
+    name: product_list_menu
+    layout_properties: {grid_position: 'BZMSPZ,WLNMZR'}
+    event_bindings: {show_details: select_product}
+    data_bindings:
+    - {property: products, code: self.product_list}
 - type: ColumnPanel
   properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
     wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: none,

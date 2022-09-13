@@ -6,7 +6,6 @@ from ..SubscriptionList import SubscriptionList
 from ...scripts.client import list_product_subscriptions
 from ...scripts.view import (
     add_class,
-    set_com_height_to_window_end,
 )
 
 
@@ -44,7 +43,7 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
     def select_product(self, product, **event_args):
         self.selected_product = product
 
-        self.select_product_menu()
+        self.product_list_menu.select_product_menu(product)
 
         if self.selected_product['id'] in self.product_subscrption_map.keys():
             subscriptions = self.product_subscrption_map[self.selected_product['id']]
@@ -86,7 +85,6 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
         self.selected_product = product
         self.selected_subscription = None
         self.product_subscrption_map = {}
-        self.product_menu_map = {}
         self.product_list = product_list
         self.page = page
 
@@ -94,7 +92,6 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
         self.init_components(**properties)
 
         # Any code you write here will run when the form opens.
-        self.populate_left_menu()
         self.select_product(product)
 
         add_class(self.ccp_container, 'fix-height')
@@ -123,11 +120,3 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
             ),
             full_width_row=True,
         )
-
-    def ccp_container_show(self, **event_args):
-        #set_com_height_to_window_end(self.ccp_container)
-        pass
-
-    def left_menu_show(self, **event_args):
-        #set_com_height_to_window_end(self.left_menu)
-        pass
