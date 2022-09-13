@@ -14,8 +14,13 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
 
     def populate_left_menu(self):
         for p in self.product_list:
-            product_menu = ProductMenuItem(self, p)
+            product_menu = ProductMenuItem()
+            product_menu.product = p
             self.product_menu_map[p['id']] = product_menu
+            product_menu.add_event_handler(
+              'show_detail',
+              self.select_product,
+            )
             self.left_menu.add_component(product_menu)
 
     def select_product_menu(self):
@@ -36,7 +41,7 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
     def is_multi_subscription(self):
         return len(self.product_subscrption_map[self.selected_product['id']]) > 1
 
-    def select_product(self, product):
+    def select_product(self, product, **event_args):
         self.selected_product = product
 
         self.select_product_menu()
