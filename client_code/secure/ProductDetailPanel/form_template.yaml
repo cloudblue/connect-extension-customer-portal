@@ -11,7 +11,7 @@ components:
     background: 'theme:Gray 100'}
   name: left_menu
   layout_properties: {grid_position: 'AEJLVZ,TTWNTB', full_width_row: true}
-  event_bindings: {show: left_menu_show}
+  event_bindings: {}
   components:
   - type: form:secure.ProductListMenu
     properties: {}
@@ -29,12 +29,24 @@ components:
   components:
   - type: ColumnPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-      wrap_on: never, col_spacing: none, spacing_above: none, col_widths: '{}', spacing_below: none,
-      background: 'theme:White'}
+      wrap_on: mobile, col_spacing: none, spacing_above: none, col_widths: '{"GVWUEP":45,"WJJAQS":15}',
+      spacing_below: none, background: 'theme:White'}
     name: top_right
     layout_properties: {grid_position: 'KCAWUI,LNZOXP', full_width_row: true}
-    components: []
+    components:
+    - type: form:secure.ProductDetail
+      properties: {}
+      name: product_details
+      layout_properties: {grid_position: 'AJCBHK,GVWUEP', row_background: rahul.mondal@cloudblue.com,
+        full_width_row: true}
+      event_bindings: {show_details: select_product}
+    - type: form:secure.SubscriptionShort
+      properties: {product_id: '', align: right}
+      name: subscription_short
+      layout_properties: {grid_position: 'AJCBHK,WJJAQS', row_background: rahul.mondal@cloudblue.com,
+        full_width_row: true}
     event_bindings: {}
+    data_bindings: []
   - type: Spacer
     properties: {visible: true, spacing_above: none, spacing_below: none, height: '1',
       tooltip: ''}
@@ -48,5 +60,5 @@ components:
     name: ccp_container
     layout_properties: {grid_position: 'UHZYYH,MTSCLD', full_width_row: true}
     components: []
-    event_bindings: {show: ccp_container_show}
+    event_bindings: {}
 is_package: true

@@ -1,0 +1,76 @@
+container:
+  type: ColumnPanel
+  event_bindings: {}
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: none, spacing_above: small, col_widths: '{"WVZSBU":73}',
+    spacing_below: small, background: ''}
+components:
+- type: ColumnPanel
+  properties: {role: right-margin-30, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: none, spacing_above: small, col_widths: '{}', spacing_below: small,
+    background: ''}
+  name: info_panel
+  layout_properties:
+    col_widths: {}
+    grid_position: KDFNNM,WVZSBU
+    full_width_row: true
+  components:
+  - type: Label
+    properties: {role: text, align: right, tooltip: '', border: '', foreground: '',
+      visible: true, text: Product ID, font_size: 12, font: '', spacing_above: small,
+      icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: product_id_lebel
+    layout_properties: {grid_position: 'LILIRP,SFTZNO'}
+    event_bindings: {}
+    data_bindings:
+    - {property: align, code: 'self.item[''align'']'}
+  - type: Label
+    properties: {role: text, align: right, tooltip: '', border: '', foreground: '',
+      visible: true, text: PRD-000-000-000, font_size: 14, font: '', spacing_above: none,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: product_id_value
+    layout_properties: {grid_position: 'XDFTGX,KIJKQQ'}
+    data_bindings:
+    - {property: text, code: 'self.item[''product_id'']'}
+    - {property: align, code: 'self.item[''align'']'}
+    event_bindings: {}
+  - type: Label
+    properties: {role: text, align: right, tooltip: '', border: '', foreground: '',
+      visible: true, text: Subscription ID (External ID), font_size: 12, font: Robot,
+      spacing_above: small, icon_align: left, spacing_below: none, italic: false,
+      background: '', bold: false, underline: false, icon: ''}
+    name: subscription_id_label
+    layout_properties: {grid_position: 'TZPOQN,QRHULE'}
+    event_bindings: {}
+    data_bindings:
+    - {property: align, code: 'self.item[''align'']'}
+  - type: Label
+    properties: {role: text, align: right, tooltip: '', border: '', foreground: '',
+      visible: true, text: AS-000-000-000-001 (EXT-001), font_size: 14, font: '',
+      spacing_above: none, icon_align: left, spacing_below: small, italic: false,
+      background: '', bold: true, underline: false, icon: ''}
+    name: subscription_id_value
+    layout_properties: {grid_position: 'FJJIDI,XIRORL'}
+    data_bindings:
+    - {property: text, code: 'self.item[''subscription_id'']'}
+    - {property: align, code: 'self.item[''align'']'}
+    event_bindings: {}
+  - type: Label
+    properties: {role: chip, align: right, tooltip: '', border: '', foreground: '',
+      visible: true, text: ACTIVE, font_size: 12, font: Robot, spacing_above: medium,
+      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
+      underline: false, icon: ''}
+    name: subscription_status
+    layout_properties: {grid_position: 'KHCCFQ,ZBIDRJ'}
+    data_bindings:
+    - {property: text, code: 'self.item[''subscription_status'']'}
+    event_bindings: {}
+  event_bindings: {}
+is_package: true
+custom_component: true
+properties:
+- {name: product_id, type: string, default_value: '', default_binding_prop: true}
+- {name: subscription, type: object, default_value: null}
+- {name: align, type: string, default_value: right}

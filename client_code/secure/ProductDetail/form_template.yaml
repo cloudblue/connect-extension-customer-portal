@@ -1,16 +1,24 @@
+container:
+  type: ColumnPanel
+  event_bindings: {}
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: none, spacing_above: small, col_widths: '{"WDIXTA":74}',
+    spacing_below: small, background: ''}
 components:
 - type: FlowPanel
   properties: {role: null, spacing: small, align: left, tooltip: '', border: '', foreground: '',
     visible: true, spacing_above: small, spacing_below: small, background: ''}
   name: product_short_detail_panel
-  layout_properties: {grid_position: 'PMYMSL,CZHGZI YFFQPV,LLUOOJ', full_width_row: true}
+  layout_properties:
+    col_widths: {}
+    grid_position: DVONPE,OSMYYN
+    full_width_row: true
   components:
   - type: Spacer
-    properties: {visible: true, spacing_above: none, spacing_below: none, height: 21,
-      tooltip: ''}
-    name: spacer_1
-    layout_properties: {grid_position: 'PMYMSL,CZHGZI YFFQPV,ITWGYP', full_width_row: true,
-      width: 26, expand: false}
+    properties: {height: 32}
+    name: spacer_2
+    layout_properties: {width: 42}
+    event_bindings: {}
   - type: Image
     properties: {role: product-short-icon, vertical_align: center, height: '', tooltip: '',
       border: '', foreground: '', visible: true, display_mode: original_size, spacing_above: medium,
@@ -53,13 +61,15 @@ components:
   properties: {role: null, spacing: none, align: left, tooltip: '', border: '', foreground: '',
     visible: true, spacing_above: none, spacing_below: none, background: ''}
   name: flow_panel_1
-  layout_properties: {grid_position: 'PMYMSL,CZHGZI KOWUUW,DNABKU', full_width_row: true}
+  layout_properties:
+    col_widths: {}
+    grid_position: LVCHZR,UEANZQ
+    full_width_row: true
   components:
   - type: Spacer
-    properties: {visible: true, spacing_above: none, spacing_below: none, height: 32,
-      tooltip: ''}
-    name: spacer_2
-    layout_properties: {width: 32, expand: false}
+    properties: {height: 32}
+    name: spacer_3
+    layout_properties: {width: 45}
     event_bindings: {}
   - type: Label
     properties: {role: light-text, align: left, tooltip: '', border: '', foreground: '',
@@ -73,69 +83,18 @@ components:
     - {property: text, code: 'self.item[''short_description'']'}
     event_bindings: {}
   - type: Spacer
-    properties: {visible: true, spacing_above: none, spacing_below: none, height: 32,
-      tooltip: ''}
-    name: spacer_3
-    layout_properties: {width: 32, expand: false}
+    properties: {height: 32}
+    name: spacer_1
+    layout_properties: {width: 14}
     event_bindings: {}
-  event_bindings: {}
-- type: ColumnPanel
-  properties: {role: right-margin-30, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: never, col_spacing: none, spacing_above: small, col_widths: '{}', spacing_below: small,
-    background: ''}
-  name: info_panel
-  layout_properties: {grid_position: 'PMYMSL,UZWAQE', full_width_row: true}
-  components:
-  - type: Label
-    properties: {role: text, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: Product ID, font_size: 12, font: '', spacing_above: small,
-      icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: product_id_lebel
-    layout_properties: {grid_position: 'LILIRP,SFTZNO'}
-    event_bindings: {}
-  - type: Label
-    properties: {role: text, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: PRD-000-000-000, font_size: 14, font: '', spacing_above: none,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-      underline: false, icon: ''}
-    name: product_id_value
-    layout_properties: {grid_position: 'XDFTGX,KIJKQQ'}
-    data_bindings:
-    - {property: text, code: 'self.item[''id'']'}
-    event_bindings: {}
-  - type: Label
-    properties: {role: text, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: Subscription ID (External ID), font_size: 12, font: Robot,
-      spacing_above: small, icon_align: left, spacing_below: none, italic: false,
-      background: '', bold: false, underline: false, icon: ''}
-    name: subscription_id_label
-    layout_properties: {grid_position: 'TZPOQN,QRHULE'}
-    event_bindings: {}
-  - type: Label
-    properties: {role: text, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: AS-0000-0000-0000-001, font_size: 14, font: '', spacing_above: none,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: true,
-      underline: false, icon: ''}
-    name: subscription_id_value
-    layout_properties: {grid_position: 'FJJIDI,XIRORL'}
-    data_bindings:
-    - {property: text, code: 'self.item[''subscription_id'']'}
-    event_bindings: {}
-  - type: Label
-    properties: {role: chip, align: right, tooltip: '', border: '', foreground: '',
-      visible: true, text: ACTIVE, font_size: 12, font: Robot, spacing_above: medium,
-      icon_align: left, spacing_below: small, italic: false, background: '', bold: false,
-      underline: false, icon: ''}
-    name: subscription_status
-    layout_properties: {grid_position: 'KHCCFQ,ZBIDRJ'}
-    data_bindings:
-    - {property: text, code: 'self.item[''subscription''][''status'']'}
-container:
-  type: ColumnPanel
-  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: medium, spacing_above: small, col_widths: '{"CZHGZI":70,"UZWAQE":30,"LLUOOJ":76}',
-    spacing_below: large, background: 'theme:White'}
-  data_bindings: []
   event_bindings: {}
 is_package: true
+custom_component: true
+properties:
+- {name: product, type: object, default_value: null, default_binding_prop: true}
+events:
+- name: show_details
+  default_event: true
+  description: Show the details of the product.
+  parameters:
+  - {name: product, description: Product object for which the details need to be shown.}
