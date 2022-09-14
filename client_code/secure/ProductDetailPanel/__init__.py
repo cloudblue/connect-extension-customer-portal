@@ -1,11 +1,11 @@
 from ._anvil_designer import ProductDetailPanelTemplate
 from ..ProductMenuItem import ProductMenuItem
-from ..ProductShort import ProductShort
 from ..SubscriptionDetailPanel import SubscriptionDetailPanel
 from ..SubscriptionList import SubscriptionList
 from ...scripts.client import list_product_subscriptions
 from ...scripts.view import (
     add_class,
+    set_com_height_to_window_end,
 )
 
 
@@ -30,12 +30,12 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
                 product_menu.role = None
 
     def list_product_subscriptions(self):
-        subscriptoins = list_product_subscriptions(self.selected_product['id'])
-        if subscriptoins:
+        subscriptions = list_product_subscriptions(self.selected_product['id'])
+        if subscriptions:
             self.product_subscrption_map[
-                self.selected_product['id']] = subscriptoins
+                self.selected_product['id']] = subscriptions
 
-        return subscriptoins
+        return subscriptions
 
     def is_multi_subscription(self):
         return len(self.product_subscrption_map[self.selected_product['id']]) > 1
@@ -70,16 +70,9 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
                     full_width_row=True,
                 )
 
-        self.top_right.clear()
-        self.top_right.add_component(
-            ProductShort(
-                self,
-                self.selected_product,
-                self.selected_subscription,
-                self.is_multi_subscription(),
-            ),
-            full_width_row=True,
-        )
+        self.product_details.item = product
+        self.subscription_short.product_id = product['id']
+        self.subscription_short.subscription = self.selected_subscription
 
     def __init__(self, page, product, product_list, **properties):
         self.selected_product = product
@@ -110,13 +103,6 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
             full_width_row=True,
         )
 
-        self.top_right.clear()
-        self.top_right.add_component(
-            ProductShort(
-                self,
-                self.selected_product,
-                subscription,
-                self.is_multi_subscription(),
-            ),
-            full_width_row=True,
-        )
+        self.product_details.item = self.selected_product
+        self.subscription_short.product_id = self.selected_product['id']
+        self.subscription_short.subscription = subscription
