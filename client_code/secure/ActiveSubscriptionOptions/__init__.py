@@ -1,5 +1,5 @@
 from ._anvil_designer import ActiveSubscriptionOptionsTemplate
-from ...scripts.client import get_product_actions
+from .ActionTemplate import ActionTemplate
 from ...scripts.view import (
     add_class,
     fix_height_to_window_end,
@@ -8,45 +8,117 @@ from ...scripts.view import (
 
 class ActiveSubscriptionOptions(ActiveSubscriptionOptionsTemplate):
 
-    def populate_actions(self, product):
-        if 'actions' not in product.keys():
-            product['actions'] = get_product_actions(product['id'])
-        self.action_repeating_panel.items = product['actions']
+    def populate_download_links(self, download_links):
 
-    def populate_links(self, product):
-        ui_config = product.get('customer_ui_settings')
+        if download_links:
+            self.document_link_repeating_panel.visible = True
+            self.download_link_repeating_panel.items = download_links
+        else:
+            self.document_link_repeating_panel.visible = False
 
-        if ui_config:
-            download_links = ui_config.get('download_links')
+    def populate_document_links(self, document_links):
+        if document_links:
+            self.document_link_repeating_panel.visible = True
+            self.document_link_repeating_panel.items = document_links
+        else:
+            self.document_link_repeating_panel.visible = False
+    
+    def populate_action_buttons(self, actions):
+        if actions:
+            self.actions_column_panel.visible = True
+            for action in actions:
+                action_button = ActionTemplate()
+                action_button.action = action
+                action_button.product_id = self.product_id
+                action_button.subscription_id = self.subscription_id
+                action_button.add_event_handler(
+                  'action_click',
+                  self.action_link_click_event_handler,
+                )
+                self.actions_column_panel.add_component(action_button)
 
-            if download_links:
-                self.document_link_repeating_panel.visible = True
-                self.download_link_repeating_panel.items = download_links
-            else:
-                self.document_link_repeating_panel.visible = False
-
-            document_links = ui_config.get('documents')
-
-            if document_links:
-                self.document_link_repeating_panel.visible = True
-                self.document_link_repeating_panel.items = document_links
-            else:
-                self.document_link_repeating_panel.visible = False
-
-    def __init__(self, product, subscrpiton, **properties):
-        self.product = product
-        self.subscription = subscrpiton
+    def __init__(self, **properties):
+        self.subscription_id = properties.get('subscription_id')
+        self.product_id = properties.get('product_id')
+        self.actions = properties.get('actions')
+        self.download_links = properties.get('download_links')
+        self.document_links = properties.get('document_links')
+        self.extend_height_to_page_end = properties.get('extend_height_to_page_end')
 
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
 
         # Any code you write here will run when the form opens.
-        self.action_repeating_panel.product_id = product['id']
-        self.action_repeating_panel.subscription_id = subscrpiton['id']
-
-        self.populate_actions(product)
-        self.populate_links(product)
+        self.populate_download_links(self._download_links)
+        self.populate_document_links(self._document_links)
+        self.populate_action_buttons(self._actions)
+    
+    @property
+    def subscription_id(self):
+        return self._subscription_id
+    
+    @subscription_id.setter
+    def subscription_id(self, value):
+        self._subscription_id = value
+    
+    @property
+    def product_id(self):
+        return self._product_id
+    
+    @product_id.setter
+    def product_id(self, value):
+        self._product_id = value
+    
+    @property
+    def download_links(self):
+        return self._download_links
+    
+    @download_links.setter
+    def download_links(self, value):
+        self._download_links = value
+        self.populate_download_links(self._download_links)
+    
+    @property
+    def document_links(self):
+        return self._document_links
+    
+    @document_links.setter
+    def document_links(self, value):
+        self._document_links = value
+        self.populate_document_links(self._document_links)
+    
+    @property
+    def actions(self):
+        return self._actions
+    
+    @actions.setter
+    def actions(self, value):
+        self._actions = value
+        self.populate_action_buttons(self._actions)
+    
+    @property
+    def extend_height_to_page_end(self):
+        return self._extend_height
+    
+    @extend_height_to_page_end.setter
+    def extend_height_to_page_end(self, value):
+        self._extend_height = value
 
     def form_show(self, **event_args):
-        add_class(self, 'fix-height')
-        fix_height_to_window_end('fix-height')
+        if self._extend_height:
+            add_class(self, 'fix-height')
+            fix_height_to_window_end('fix-height')
+    
+    def action_link_click_event_handler(
+      self,
+      action_id,
+      product_id,
+      subscription_id,
+      **event_args,
+    ):
+        self.raise_event(
+            'action_click',
+            action_id=action_id,
+            product_id=product_id,
+            subscription_id=subscription_id,
+        )

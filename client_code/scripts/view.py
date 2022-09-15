@@ -4,15 +4,20 @@ from anvil.js.window import jQuery
 
 def change_status_background_color(component, subscription_status):
     status = get_dom_node(component)
-    status.getElementsByTagName(
+    class_list = status.getElementsByTagName(
         'span',
-    )[0].classList.add(subscription_status)
+    )[0].classList
+
+    for to_remove in ['active', 'processing', 'terminating', 'terminated', 'suspended', 'inquiring']:
+        class_list.remove(to_remove)
+
+    class_list.add(subscription_status)
 
 
 def __set_element_height_to_window_end(self, element):
-    clientRect = element.getBoundingClientRect()
+    client_rect = element.getBoundingClientRect()
     if window.innerWidth > 768:
-        element.style.height = f'{window.innerHeight - clientRect.top}px'
+        element.style.height = f'{window.innerHeight - client_rect.top}px'
     else:
         element.style.height = 'auto'
 
@@ -36,6 +41,7 @@ def make_target_new_tab(component):
     a_elements = element.getElementsByTagName('a')
     for a in a_elements:
         a.target = '_blank'
+
 
 def set_opacity(clazz, opacity):
     def set_element_opacity(self, element):

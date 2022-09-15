@@ -1,9 +1,20 @@
-container:
-  type: ColumnPanel
-  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: never, col_spacing: tiny, spacing_above: none, col_widths: '{"QXEBKA":5,"LUGLTQ":55}',
-    spacing_below: none, background: ''}
-  event_bindings: {show: form_show}
+properties:
+- {name: subscription_id, type: string, default_value: '', default_binding_prop: true}
+- {name: product_id, type: string, default_value: ''}
+- {name: actions, type: object, default_value: null}
+- {name: download_links, type: object, default_value: null}
+- {name: document_links, type: object, default_value: null}
+- {name: extend_height_to_page_end, type: boolean, default_value: null}
+is_package: true
+events:
+- name: action_click
+  default_event: true
+  description: Event will be raised when an action is clicked by the user.
+  parameters:
+  - {name: action_id, description: ID of the action which is triggered.}
+  - {name: product_id, description: Product ID for which action has been called.}
+  - {name: subscription_id, description: Subscription ID for which action has been called.}
+custom_component: true
 components:
 - type: Spacer
   properties: {height: 32}
@@ -18,17 +29,10 @@ components:
   layout_properties: {grid_position: 'MWSNQF,LUGLTQ'}
   components:
   - type: FlowPanel
-    properties: {}
-    name: action_panel
-    layout_properties: {grid_position: 'SUPJYR,URJKLL'}
-    components:
-    - type: RepeatingPanel
-      properties: {role: horizontal-repeater, tooltip: '', border: '', foreground: '',
-        items: null, visible: true, spacing_above: small, spacing_below: small, item_template: secure.ActiveSubscriptionOptions.ActionTemplate,
-        background: ''}
-      name: action_repeating_panel
-      layout_properties: {width: null, expand: true}
-      event_bindings: {}
+    properties: {role: null, spacing: medium, align: left, tooltip: '', border: '',
+      foreground: '', visible: true, spacing_above: small, spacing_below: small, background: ''}
+    name: actions_column_panel
+    layout_properties: {grid_position: 'XJIOXD,EJFOGE', full_width_row: true}
     event_bindings: {}
   - type: ColumnPanel
     properties: {col_widths: '{}'}
@@ -69,5 +73,11 @@ components:
       name: download_link_repeating_panel
       layout_properties: {grid_position: 'DRNKDD,XWSUIR'}
       event_bindings: {}
+    event_bindings: {}
   event_bindings: {}
-is_package: true
+container:
+  type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: tiny, spacing_above: none, col_widths: '{"QXEBKA":5,"LUGLTQ":55}',
+    spacing_below: none, background: ''}
+  event_bindings: {show: form_show}

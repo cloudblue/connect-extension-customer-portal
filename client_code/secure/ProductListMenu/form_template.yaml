@@ -1,14 +1,14 @@
-container:
-  type: ColumnPanel
-  event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}
-components: []
-is_package: true
-custom_component: true
 properties:
 - {name: products, type: object, default_value: null, default_binding_prop: true}
+is_package: true
 events:
 - name: show_details
   default_event: true
   description: Show details of the product for which the event has been triggered.
   parameters:
   - {name: product, description: Product object for which the event has been triggered.}
+custom_component: true
+components: []
+container:
+  type: ColumnPanel
+  event_bindings: {refreshing_data_bindings: form_refreshing_data_bindings}

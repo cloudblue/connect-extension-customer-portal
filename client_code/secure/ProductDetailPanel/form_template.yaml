@@ -41,7 +41,7 @@ components:
         full_width_row: true}
       event_bindings: {show_details: select_product}
     - type: form:secure.SubscriptionShort
-      properties: {product_id: '', align: right}
+      properties: {product_id: rahul.mondal@cloudblue.com, align: right}
       name: subscription_short
       layout_properties: {grid_position: 'AJCBHK,WJJAQS', row_background: rahul.mondal@cloudblue.com,
         full_width_row: true}
