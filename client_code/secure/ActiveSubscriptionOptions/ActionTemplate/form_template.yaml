@@ -1,9 +1,18 @@
-container:
-  type: ColumnPanel
-  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: none, spacing_above: small, col_widths: '{}', spacing_below: small,
-    background: ''}
-  event_bindings: {}
+properties:
+- {name: action, type: object, default_value: null, default_binding_prop: true}
+- {name: product_id, type: string, default_value: ''}
+- {name: subscription_id, type: string, default_value: ''}
+is_package: true
+events:
+- name: action_click
+  default_event: true
+  parameters:
+  - {name: action_id, description: ID of the action which has been triggered.}
+  - {name: product_id, description: Product ID for which action has been triggered.}
+  - {name: subscription_id, description: Subscription ID for which action has been triggered.}
+  description: Event will be raised when an action is clicked by the user.
+item_type: {table_id: null}
+custom_component: true
 components:
 - type: Link
   properties: {role: action-button, url: '', align: center, tooltip: '', border: '',
@@ -15,4 +24,9 @@ components:
   data_bindings:
   - {property: text, code: 'self.item[''name'']'}
   event_bindings: {click: action_link_click}
-is_package: true
+container:
+  type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: none, spacing_above: small, col_widths: '{}', spacing_below: small,
+    background: ''}
+  event_bindings: {}

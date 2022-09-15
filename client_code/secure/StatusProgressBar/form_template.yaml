@@ -1,0 +1,22 @@
+container:
+  type: ColumnPanel
+  properties: {role: fix-height, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: medium, spacing_above: large, col_widths: '{"BGYWBK":3,"IDXDXH":57}',
+    spacing_below: small, background: ''}
+  event_bindings: {show: form_show}
+components:
+- type: Spacer
+  properties: {height: 32}
+  name: status_progress_spacer
+  layout_properties: {grid_position: 'CGWOKH,BGYWBK'}
+- type: RepeatingPanel
+  properties: {role: status-progress-bar, tooltip: '', border: '', foreground: '',
+    items: null, visible: true, spacing_above: none, spacing_below: none, item_template: secure.StatusProgressBar.StatusItemTemplate,
+    background: ''}
+  name: status_repeating_panel
+  layout_properties: {grid_position: 'CGWOKH,IDXDXH'}
+  event_bindings: {}
+is_package: true
+custom_component: true
+properties:
+- {name: subscription_status, type: string, default_value: default, default_binding_prop: true}

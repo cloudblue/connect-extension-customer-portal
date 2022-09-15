@@ -27,10 +27,29 @@ components:
   event_bindings: {}
 - type: ColumnPanel
   properties: {role: fix-height, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: never, col_spacing: none, spacing_above: none, col_widths: '', spacing_below: none,
+    wrap_on: never, col_spacing: none, spacing_above: none, col_widths: '{}', spacing_below: none,
     background: 'theme:Gray 100'}
   name: subscription_option_panel
   layout_properties: {grid_position: 'IIPUQR,RUQROY', full_width_row: true, row_background: 'theme:Gray
       200'}
   event_bindings: {}
+  components:
+  - type: form:secure.ActiveSubscriptionOptions
+    properties: {subscription_id: '', product_id: '', extend_height_to_page_end: null}
+    name: active_subscription_options
+    layout_properties: {grid_position: 'VATRGG,NKEPHJ', full_width_row: true}
+    event_bindings: {action_click: active_subscription_options_action_click}
+    data_bindings:
+    - {property: subscription_id, code: 'self.subscription[''id'']'}
+    - {property: product_id, code: 'self.product[''id'']'}
+    - {property: download_links, code: self.download_links}
+    - {property: document_links, code: self.document_links}
+    - {property: actions, code: self.actions}
+  - type: form:secure.StatusProgressBar
+    properties: {subscription_status: default}
+    name: status_progress_bar
+    layout_properties: {grid_position: 'UNUIKN,NNNXGX', row_background: rahul.mondal@cloudblue.com,
+      full_width_row: true}
+    data_bindings:
+    - {property: subscription_status, code: 'self.subscription[''status'']'}
 is_package: true

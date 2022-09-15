@@ -5,7 +5,7 @@ from ...scripts.client import get_connect_base_url
 class ProductCard(ProductCardTemplate):
 
     def cut_short(self, value, size):
-        return (value[0:(size - 3)] + '...') if len(value) > size else value
+      return (value[0:(size - 3)] + '...') if len(value) > size else value
 
     def prepare(self, portal_url, product):
         product['vendor'] = f"by {product['owner']['name']}"

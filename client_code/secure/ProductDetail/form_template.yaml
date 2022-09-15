@@ -1,9 +1,13 @@
-container:
-  type: ColumnPanel
-  event_bindings: {}
-  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: never, col_spacing: none, spacing_above: small, col_widths: '{"WDIXTA":74}',
-    spacing_below: small, background: ''}
+properties:
+- {name: product, type: object, default_value: null, default_binding_prop: true}
+is_package: true
+events:
+- name: show_details
+  default_event: true
+  description: Show the details of the product.
+  parameters:
+  - {name: product, description: Product object for which the details need to be shown.}
+custom_component: true
 components:
 - type: FlowPanel
   properties: {role: null, spacing: small, align: left, tooltip: '', border: '', foreground: '',
@@ -88,13 +92,9 @@ components:
     layout_properties: {width: 14}
     event_bindings: {}
   event_bindings: {}
-is_package: true
-custom_component: true
-properties:
-- {name: product, type: object, default_value: null, default_binding_prop: true}
-events:
-- name: show_details
-  default_event: true
-  description: Show the details of the product.
-  parameters:
-  - {name: product, description: Product object for which the details need to be shown.}
+container:
+  type: ColumnPanel
+  event_bindings: {}
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: none, spacing_above: small, col_widths: '{"WDIXTA":74}',
+    spacing_below: small, background: ''}

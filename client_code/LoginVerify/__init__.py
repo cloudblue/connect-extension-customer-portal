@@ -84,9 +84,9 @@ class LoginVerify(LoginVerifyTemplate):
 
         if not self.resent_otp_timeout:
             self.resent_otp_timeout = window.setTimeout(
-              recalculate_timeout,
-              1000,
-              timeout,
+                recalculate_timeout,
+                1000,
+                timeout,
             )
 
     @enforce_recaptcha
@@ -142,4 +142,3 @@ class LoginVerify(LoginVerifyTemplate):
         self.clear_passcode()
         self.pc_1.focus()
         window.setTimeout(self.handle_resend_otp, 30000)
-

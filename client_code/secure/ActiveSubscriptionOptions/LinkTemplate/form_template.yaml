@@ -1,7 +1,8 @@
-container:
-  type: ColumnPanel
-  properties: {col_widths: '{}'}
-  event_bindings: {}
+properties:
+- {name: link, type: object, default_value: null, default_binding_prop: true}
+is_package: true
+item_type: {table_id: null}
+custom_component: true
 components:
 - type: Link
   properties: {role: null, url: '', align: left, tooltip: '', border: '', foreground: '',
@@ -13,5 +14,8 @@ components:
   data_bindings:
   - {property: text, code: 'self.item[''title'']'}
   - {property: url, code: 'self.item[''url'']'}
-is_package: true
-item_type: {table_id: null}
+  event_bindings: {}
+container:
+  type: ColumnPanel
+  properties: {col_widths: '{}'}
+  event_bindings: {}
