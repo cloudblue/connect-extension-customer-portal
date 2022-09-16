@@ -35,6 +35,7 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
         if subscriptions:
             self.ccp_container.clear()
             if len(subscriptions) == 1:
+                self.subscription_list.visible = False
                 self.selected_subscription = subscriptions[0]
                 self.ccp_container.add_component(
                     SubscriptionDetailPanel(
@@ -47,10 +48,8 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
                 )
             else:
                 self.selected_subscription = None
-                self.ccp_container.add_component(
-                    SubscriptionList(self, subscriptions),
-                    full_width_row=True,
-                )
+                self.subscription_list.visible = True
+                self.subscription_list.subscriptions = subscriptions
 
         self.product_details.item = product
         self.subscription_short.product_id = product['id']
@@ -62,6 +61,7 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
         self.product_subscription_map = {}
         self.product_list = product_list
         self.page = page
+        self.subscription_list.visible = False
 
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
@@ -71,7 +71,8 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
 
         add_class(self.ccp_container, 'fix-height')
 
-    def show_subscription_detail(self, subscription):
+    def show_subscription_detail(self, subscription, **event_args):
+        self.subscription_list.visible = False
         self.selected_subscription = subscription
 
         self.ccp_container.clear()

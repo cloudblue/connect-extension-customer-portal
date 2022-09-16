@@ -28,7 +28,7 @@ def ensure_recaptcha(func):
     def wrap(*args, **kwargs):
         recaptcha_token = __get_param_value('recaptcha_token', func, args, kwargs)
         recaptcha_secret = secrets.get_secret('RECAPTCHA_SECRET')
-        response = http.request(    
+        response = http.request(
             url=f'https://www.google.com/recaptcha/api/siteverify?secret={recaptcha_secret}&response={recaptcha_token}',
             method='POST',
             json=True,
@@ -39,4 +39,3 @@ def ensure_recaptcha(func):
             raise Exception('Failed recaptcha validation.')
 
     return wrap
-

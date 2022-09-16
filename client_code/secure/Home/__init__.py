@@ -30,14 +30,13 @@ class Home(HomeTemplate):
         )
 
         window.onresize = do_action
-        
 
     def lnk_home_click(self, **event_args):
         self.content_panel.clear()
-        
+
         if not self.product_list_panel:
             self.product_list_panel = ProductList(self.content_panel)
-        
+
         self.content_panel.add_component(
             self.product_list_panel,
             full_width_row=True,
@@ -58,5 +57,4 @@ class Home(HomeTemplate):
             open_form('Login')
 
     def form_show(self, **event_args):
-      set_opacity('grecaptcha-badge', 0)
-
+        set_opacity('grecaptcha-badge', 0)

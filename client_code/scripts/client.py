@@ -2,7 +2,6 @@ from anvil import alert, server
 
 from .auth import handle_auth_error
 
-
 DEBUG = None
 BASE_URL = None
 
@@ -15,10 +14,12 @@ def handle_server_response(show_alert=True):
                 return response.get('result')
             elif show_alert:
                 alert(f"Error during fetching data from server. Error: {response['error']}")
+
         return wrapper
+
     return decorator
 
-  
+
 @handle_auth_error
 @handle_server_response()
 def initiate_auth(email, recaptcha_token):
@@ -29,7 +30,7 @@ def initiate_auth(email, recaptcha_token):
 @handle_server_response(show_alert=False)
 def validate_token(email, passcode, recaptcha_token):
     return server.call('validate_token', email, passcode, recaptcha_token)
-    
+
 
 @handle_auth_error
 @handle_server_response()
@@ -76,4 +77,4 @@ def is_debug():
     global DEBUG
     if DEBUG is None:
         DEBUG = server.call('is_debug')
-    return DEBUG  
+    return DEBUG

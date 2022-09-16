@@ -809,12 +809,12 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
 */
 
 .content .anvil-measure-this {
-  padding-bottom: 0; /* Embedding is not needed for this app */
+  padding-bottom: 0px; /* Embedding is not needed for this app */
 }
 
 .anvil-panel-col {
-  padding-bottom: 0;
-  margin-bottom: 0;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .anvil-role-top-icon {
@@ -846,7 +846,7 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
 }
 
 .anvil-role-right-margin-30 {
-  margin-right: 30px;
+  margin-right: 44px;
 }
 
 .anvil-role-chip span {
@@ -893,7 +893,7 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
 
 .anvil-role-table-title {
   padding: 2px 24px;
-  border-radius: 10px 10px 0 0;
+  border-radius: 10px 10px 0px 0px;
 }
 
 .anvil-role-light-text {
@@ -934,6 +934,7 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
 .anvil-role-scrollable {}
 
 .anvil-role-status-complete, .anvil-role-status-in_progress, .anvil-role-status-pending {
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -1041,6 +1042,10 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
   overflow-y: auto;
 }
 
+.fix-height {
+  overflow-x: scroll;
+}
+
 @media(max-width:768px) {
   .anvil-role-fix-height, .anvil-role-side-menu  {
     min-height: auto !important;
@@ -1052,7 +1057,7 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
   
   .anvil-role-login-icon {
     max-height: 35px;
-    margin: 17px 0px 18px 0px;
+    margin: 17px 0 18px 0;
   }
 }
 

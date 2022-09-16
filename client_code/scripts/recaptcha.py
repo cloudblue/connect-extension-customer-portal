@@ -8,7 +8,7 @@ def enforce_recaptcha(func):
         def action(token):
             kwargs['recaptcha_token'] = token
             func(*args, **kwargs)
-        
+
         grecaptcha.execute(
             RECAPTCHA_SITE_KEY,
             {'action': 'submit'},

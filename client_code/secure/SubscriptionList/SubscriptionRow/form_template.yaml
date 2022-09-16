@@ -42,3 +42,10 @@ components:
   layout_properties: {column: VBEXZA}
   event_bindings: {click: view_details_click}
 is_package: true
+custom_component: true
+events:
+- name: show_subscription_detail
+  default_event: true
+  description: This event is triggered when the user clicl on the show details link.
+  parameters:
+  - {name: subscription, description: rahul.mondal@cloudblue.comSubscription object for which show details has been requested.}

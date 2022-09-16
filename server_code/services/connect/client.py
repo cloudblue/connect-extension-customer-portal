@@ -10,7 +10,7 @@ class ConnectClient:
             endpoint=secrets.get_secret('CONNECT_API_URL'),
             use_specs=False,
         )
-    
+
     def list_tier_accounts(self, email):
         return self.client('tier').accounts.filter(
             R().contact_info.contact.email.eq(email),
@@ -47,7 +47,7 @@ class ConnectClient:
 
     def get_subscription_template(self, asset_id):
         return self.client.assets[asset_id]('render').get()
-    
+
     def get_last_transition_asset_request(self, asset_id):
         return self.client.requests.filter(
             R().asset.id.eq(asset_id),

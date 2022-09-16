@@ -1,8 +1,8 @@
-from ._anvil_designer import SubscriptionRowTemplateTemplate
+from ._anvil_designer import SubscriptionRowTemplate
 from ....scripts.view import change_status_background_color
 
 
-class SubscriptionRowTemplate(SubscriptionRowTemplateTemplate):
+class SubscriptionRow(SubscriptionRowTemplate):
     def __init__(self, **properties):
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
@@ -14,5 +14,13 @@ class SubscriptionRowTemplate(SubscriptionRowTemplateTemplate):
         )
 
     def view_details_click(self, **event_args):
-        """This method is called when the link is clicked"""
-        self.parent.page.show_subscription_detail(self.item)
+        if self.parent:
+            self.parent.raise_event(
+                'x-show_subscription_detail',
+                subscription=self.item,
+            )
+        else:
+            self.raise_event(
+                'show_subscription_detail',
+                subscription=self.item,
+            )

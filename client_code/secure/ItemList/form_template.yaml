@@ -45,7 +45,7 @@ components:
       components:
       - type: RepeatingPanel
         properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
-          visible: true, spacing_above: small, spacing_below: small, item_template: secure.SubscriptionList.ItemRowTemplate,
+          visible: true, spacing_above: small, spacing_below: small, item_template: secure.ItemList.ItemRowTemplate,
           background: ''}
         name: item_repeating_panel
         layout_properties: {}

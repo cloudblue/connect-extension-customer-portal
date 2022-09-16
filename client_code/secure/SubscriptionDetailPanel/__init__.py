@@ -65,12 +65,12 @@ class SubscriptionDetailPanel(SubscriptionDetailPanelTemplate):
         self.page.select_product(self.product)
 
     def active_subscription_options_action_click(
-        self,
-        action_id,
-        product_id,
-        subscription_id,
-        **event_args,
-      ):
+            self,
+            action_id,
+            product_id,
+            subscription_id,
+            **event_args,
+    ):
         link = get_action_link(
             product_id,
             subscription_id,

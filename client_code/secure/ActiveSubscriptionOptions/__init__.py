@@ -22,7 +22,7 @@ class ActiveSubscriptionOptions(ActiveSubscriptionOptionsTemplate):
             self.document_link_repeating_panel.items = document_links
         else:
             self.document_link_repeating_panel.visible = False
-    
+
     def populate_action_buttons(self, actions):
         if actions:
             self.actions_column_panel.visible = True
@@ -32,8 +32,8 @@ class ActiveSubscriptionOptions(ActiveSubscriptionOptionsTemplate):
                 action_button.product_id = self.product_id
                 action_button.subscription_id = self.subscription_id
                 action_button.add_event_handler(
-                  'action_click',
-                  self.action_link_click_event_handler,
+                    'action_click',
+                    self.action_link_click_event_handler,
                 )
                 self.actions_column_panel.add_component(action_button)
 
@@ -52,54 +52,54 @@ class ActiveSubscriptionOptions(ActiveSubscriptionOptionsTemplate):
         self.populate_download_links(self._download_links)
         self.populate_document_links(self._document_links)
         self.populate_action_buttons(self._actions)
-    
+
     @property
     def subscription_id(self):
         return self._subscription_id
-    
+
     @subscription_id.setter
     def subscription_id(self, value):
         self._subscription_id = value
-    
+
     @property
     def product_id(self):
         return self._product_id
-    
+
     @product_id.setter
     def product_id(self, value):
         self._product_id = value
-    
+
     @property
     def download_links(self):
         return self._download_links
-    
+
     @download_links.setter
     def download_links(self, value):
         self._download_links = value
         self.populate_download_links(self._download_links)
-    
+
     @property
     def document_links(self):
         return self._document_links
-    
+
     @document_links.setter
     def document_links(self, value):
         self._document_links = value
         self.populate_document_links(self._document_links)
-    
+
     @property
     def actions(self):
         return self._actions
-    
+
     @actions.setter
     def actions(self, value):
         self._actions = value
         self.populate_action_buttons(self._actions)
-    
+
     @property
     def extend_height_to_page_end(self):
         return self._extend_height
-    
+
     @extend_height_to_page_end.setter
     def extend_height_to_page_end(self, value):
         self._extend_height = value
@@ -108,13 +108,13 @@ class ActiveSubscriptionOptions(ActiveSubscriptionOptionsTemplate):
         if self._extend_height:
             add_class(self, 'fix-height')
             fix_height_to_window_end('fix-height')
-    
+
     def action_link_click_event_handler(
-      self,
-      action_id,
-      product_id,
-      subscription_id,
-      **event_args,
+            self,
+            action_id,
+            product_id,
+            subscription_id,
+            **event_args,
     ):
         self.raise_event(
             'action_click',

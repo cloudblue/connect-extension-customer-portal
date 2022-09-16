@@ -1,4 +1,5 @@
 from ._anvil_designer import StatusItemTemplateTemplate
+
 status_icon_map = {
     'complete': 'fa:check-circle',
     'in_progress': 'fa:circle',
