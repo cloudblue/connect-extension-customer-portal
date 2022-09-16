@@ -41,3 +41,4 @@ container:
     visible: true, font_size: 14, font: Roboto, spacing_above: none, spacing_below: none,
     italic: false, background: '', bold: false, underline: false}
   event_bindings: {}
+is_package: true

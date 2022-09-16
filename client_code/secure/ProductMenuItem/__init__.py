@@ -6,11 +6,11 @@ class ProductMenuItem(ProductMenuItemTemplate):
         # Set Form properties and Data Bindings.
         self.item = properties.get('product') or {}
         self.init_components(**properties)
-    
+
     @property
     def product(self):
         return self.item
-    
+
     @product.setter
     def product(self, value):
         self.item = value

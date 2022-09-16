@@ -48,7 +48,7 @@ def generate_and_send_token(user):
         text=f'Your login OPT is {token}',
     )
 
-    
+
 def find_and_store_user(email):
     connect_client = ConnectClient()
     accounts = list(connect_client.list_tier_accounts(email))
@@ -77,7 +77,7 @@ def update_accounts(user):
 @ensure_recaptcha
 def initiate_auth(email, recaptcha_token):
     user = app_tables.users.get(email=email, enabled=True)
-      
+
     if not user:
         user = find_and_store_user(email)
     else:
@@ -86,7 +86,7 @@ def initiate_auth(email, recaptcha_token):
     if user:
         clean_tokens(user)
         generate_and_send_token(user)
-  
+
     return True
 
 
@@ -105,5 +105,5 @@ def validate_token(email, token, recaptcha_token):
             return True
         elif token:
             token.delete()
-        
+
         raise Exception('OTP is not correct!')

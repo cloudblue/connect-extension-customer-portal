@@ -19,9 +19,10 @@ components:
     full_width_row: true
   components:
   - type: Spacer
-    properties: {height: 32}
+    properties: {visible: true, spacing_above: small, spacing_below: small, height: 32,
+      tooltip: ''}
     name: spacer_2
-    layout_properties: {width: 42}
+    layout_properties: {width: 30, expand: false}
     event_bindings: {}
   - type: Image
     properties: {role: product-short-icon, vertical_align: center, height: '', tooltip: '',
@@ -71,9 +72,10 @@ components:
     full_width_row: true
   components:
   - type: Spacer
-    properties: {height: 32}
+    properties: {visible: true, spacing_above: small, spacing_below: small, height: 32,
+      tooltip: ''}
     name: spacer_3
-    layout_properties: {width: 45}
+    layout_properties: {width: 30, expand: false}
     event_bindings: {}
   - type: Label
     properties: {role: light-text, align: left, tooltip: '', border: '', foreground: '',

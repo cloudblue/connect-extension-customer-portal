@@ -1,7 +1,7 @@
 def normalized_object(obj, key_prefix='', obj_data=None):
     if obj_data is None:
         obj_data = []
-        
+
     for key, value in obj.items():
         property_value = None
         if isinstance(value, dict):
@@ -22,11 +22,11 @@ def normalized_object(obj, key_prefix='', obj_data=None):
                     )
         else:
             property_value = value
-        
+
         if property_value:
             obj_data.append({
-              'property': f"{key_prefix}{'.' if key_prefix else ''}{key}",
-              'value' : property_value,
+                'property': f"{key_prefix}{'.' if key_prefix else ''}{key}",
+                'value': property_value,
             })
-    
+
     return obj_data

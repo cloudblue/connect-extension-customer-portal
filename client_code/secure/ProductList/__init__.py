@@ -14,7 +14,7 @@ class ProductList(ProductListTemplate):
             )
         else:
             self.page.product_detail_panel.select_product(product)
-        
+
         self.page.clear()
         self.page.add_component(
             self.page.product_detail_panel,
@@ -31,7 +31,7 @@ class ProductList(ProductListTemplate):
             for product in self.products:
                 product_card = ProductCard(product=product)
                 product_card.add_event_handler(
-                  'show_detail',
-                  self.show_product_details,
+                    'show_detail',
+                    self.show_product_details,
                 )
                 self.product_list_flow_panel.add_component(product_card)

@@ -7,9 +7,9 @@ from .utils import handle_response
 
 def invent_inquiring_status(subscription):
     if 'pending_request' in subscription and subscription[
-      'pending_request']['status'] == 'inquiring':
+        'pending_request']['status'] == 'inquiring':
         subscription['status'] = 'inquiring'
-    
+
     return subscription
 
 
@@ -94,8 +94,8 @@ def list_product_subscriptions(product_id):
 def get_activation_template(subscription_id):
     connect_client = ConnectClient()
     activation_template = None
-    #activation_template = connect_client.get_subscription_template(subscription_id) New Implementation
-    
+    # activation_template = connect_client.get_subscription_template(subscription_id) New Implementation
+
     last_approved_request = connect_client.get_last_transition_asset_request(subscription_id)
 
     if last_approved_request:

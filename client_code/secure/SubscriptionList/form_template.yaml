@@ -1,9 +1,13 @@
-container:
-  type: ColumnPanel
-  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
-    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: none,
-    background: ''}
-  event_bindings: {}
+properties:
+- {name: subscriptions, type: object, default_value: null, default_binding_prop: true}
+is_package: true
+events:
+- name: show_subscription_detail
+  default_event: true
+  description: This event will be triggered when the use clicks on the show detail link.
+  parameters:
+  - {name: subscription, description: Subscription object for which show details has been requested.}
+custom_component: true
 components:
 - type: FlowPanel
   properties: {role: scrollable, spacing: none, align: center, tooltip: '', border: '',
@@ -15,7 +19,8 @@ components:
     properties: {visible: true, spacing_above: small, spacing_below: small, height: '50',
       tooltip: ''}
     name: spacer_1
-    layout_properties: {width: 26, expand: false}
+    layout_properties: {width: 30, expand: false}
+    event_bindings: {}
   - type: ColumnPanel
     properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
       wrap_on: never, col_spacing: none, spacing_above: none, col_widths: '{}', spacing_below: none,
@@ -56,16 +61,23 @@ components:
       components:
       - type: RepeatingPanel
         properties: {role: null, tooltip: '', border: '', foreground: '', items: null,
-          visible: true, spacing_above: small, spacing_below: small, item_template: secure.SubscriptionList.SubscriptionRowTemplate,
+          visible: true, spacing_above: small, spacing_below: small, item_template: secure.SubscriptionList.SubscriptionRow,
           background: ''}
         name: subscription_repeating_panel
         layout_properties: {}
         event_bindings: {}
       event_bindings: {}
+    event_bindings: {}
   - type: Spacer
     properties: {visible: true, spacing_above: none, spacing_below: none, height: '50',
       tooltip: ''}
     name: spacer_2
-    layout_properties: {grid_position: 'IXOTSC,ELRBGT', full_width_row: true, width: 26,
+    layout_properties: {grid_position: 'IXOTSC,ELRBGT', full_width_row: true, width: 44,
       expand: false}
-is_package: true
+    event_bindings: {}
+container:
+  type: ColumnPanel
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: medium, spacing_above: none, col_widths: '{}', spacing_below: none,
+    background: ''}
+  event_bindings: {}

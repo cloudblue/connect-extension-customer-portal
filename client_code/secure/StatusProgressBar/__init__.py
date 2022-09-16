@@ -47,11 +47,11 @@ class StatusProgressBar(StatusProgressBarTemplate):
 
         # Any code you write here will run when the form opens.
         self.update_bar(self.item)
-    
+
     @property
     def subscription_status(self):
         return self.item
-    
+
     @subscription_status.setter
     def subscription_status(self, value):
         self.item = value
