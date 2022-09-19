@@ -36,40 +36,13 @@ components:
       full_width_row: true}
     data_bindings:
     - {property: subscription_items, code: 'self.item[''items'']'}
-- type: Label
-  properties: {role: table-title, align: left, tooltip: '', border: '', foreground: '',
-    visible: false, text: Subscription Properties, font_size: null, font: '', spacing_above: small,
-    icon_align: left, spacing_below: none, italic: false, background: 'theme:Gray
-      350', bold: false, underline: false, icon: ''}
-  name: subscription_properties_label
-  layout_properties: {grid_position: 'GVDGFL,OVMQDU HNPYHI,SLOLCV'}
-  event_bindings: {}
-- type: DataGrid
-  properties:
-    role: null
-    columns:
-    - {id: IUVRDM, title: Property, data_key: property}
-    - {id: MHLWMD, title: Value, data_key: value}
-    auto_header: true
-    tooltip: ''
-    border: ''
-    foreground: ''
-    rows_per_page: 10
-    visible: false
-    wrap_on: never
-    show_page_controls: true
-    spacing_above: none
-    spacing_below: large
-    background: theme:Gray 300
-  name: subscription_data_grid
-  layout_properties: {grid_position: 'GVDGFL,OVMQDU YCHNLV,SDPBOH'}
-  components:
-  - type: RepeatingPanel
-    properties: {spacing_above: none, spacing_below: none, item_template: secure.SubscriptionTemplate.SubPropertyTemplate}
-    name: sub_property_repeating_panel
-    layout_properties: {}
-    event_bindings: {}
-  event_bindings: {}
+  - type: form:secure.SubscriptionProperties
+    properties: {}
+    name: subscription_properties
+    layout_properties: {grid_position: 'OQCOPT,TLVYCX', row_background: rahul.mondal@cloudblue.com,
+      full_width_row: true}
+    data_bindings:
+    - {property: subscription, code: self.item}
 - type: Spacer
   properties: {height: 28}
   name: spacer_2

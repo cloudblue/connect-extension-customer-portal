@@ -5,6 +5,7 @@ from ..SubscriptionList import SubscriptionList
 from ...scripts.client import list_product_subscriptions
 from ...scripts.view import (
     add_class,
+    is_handheld,
     set_com_height_to_window_end,
 )
 
@@ -21,6 +22,14 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
 
     def is_multi_subscription(self):
         return len(self.product_subscription_map[self.selected_product['id']]) > 1
+    
+    def update_top_panel(self, product):
+        self.product_details.item = product
+        self.subscription_short.product_id = product['id']
+        self.subscription_short.subscription = self.selected_subscription
+        
+        if is_handheld():
+            self.subscription_short.align = 'left'
 
     def select_product(self, product, **event_args):
         self.selected_product = product
@@ -51,9 +60,7 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
                 self.subscription_list.visible = True
                 self.subscription_list.subscriptions = subscriptions
 
-        self.product_details.item = product
-        self.subscription_short.product_id = product['id']
-        self.subscription_short.subscription = self.selected_subscription
+        self.update_top_panel(product)
 
     def __init__(self, page, product, product_list, **properties):
         self.selected_product = product
@@ -86,6 +93,4 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
             full_width_row=True,
         )
 
-        self.product_details.item = self.selected_product
-        self.subscription_short.product_id = self.selected_product['id']
-        self.subscription_short.subscription = subscription
+        self.update_top_panel(self.selected_product)

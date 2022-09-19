@@ -11,18 +11,19 @@ class SubscriptionList(SubscriptionListTemplate):
         )
 
         self.init_components(**properties)
-
+    
     @property
     def subscriptions(self):
         return self.subscription_repeating_panel.items
-
+    
     @subscriptions.setter
     def subscriptions(self, value):
         self.subscription_repeating_panel.items = value
         self.refresh_data_bindings()
-
+    
+    
     def raise_show_subscription_detail_event(self, subscription, **event_args):
         self.raise_event(
-            'show_subscription_detail',
-            subscription=subscription,
+          'show_subscription_detail',
+          subscription=subscription,
         )

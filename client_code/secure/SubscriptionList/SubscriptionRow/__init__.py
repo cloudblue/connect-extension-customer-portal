@@ -14,13 +14,13 @@ class SubscriptionRow(SubscriptionRowTemplate):
         )
 
     def view_details_click(self, **event_args):
-        if self.parent:
-            self.parent.raise_event(
-                'x-show_subscription_detail',
-                subscription=self.item,
-            )
-        else:
-            self.raise_event(
-                'show_subscription_detail',
-                subscription=self.item,
-            )
+          if self.parent:
+              self.parent.raise_event(
+                  'x-show_subscription_detail',
+                  subscription=self.item,
+              )
+          else:
+              self.raise_event(
+                  'show_subscription_detail',
+                  subscription=self.item,
+              )

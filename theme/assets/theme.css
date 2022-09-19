@@ -1059,6 +1059,11 @@ https://stackoverflow.com/questions/30533055/calculating-shadow-values-for-all-m
     max-height: 35px;
     margin: 17px 0 18px 0;
   }
+
+  .anvil-role-right-margin-30 {
+    margin-right: 0 !important;
+    margin-left: 30px;
+  }
 }
 
 /*

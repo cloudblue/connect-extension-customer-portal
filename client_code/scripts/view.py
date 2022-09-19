@@ -7,17 +7,21 @@ def change_status_background_color(component, subscription_status):
     class_list = status.getElementsByTagName(
         'span',
     )[0].classList
-
+    
     for to_remove in ['active', 'processing', 'terminating', 'terminated', 'suspended', 'inquiring']:
         class_list.remove(to_remove)
-
+    
     class_list.add(subscription_status)
+
+    
+def is_handheld():
+    return window.innerWidth <= 768
 
 
 def __set_element_height_to_window_end(self, element):
-    client_rect = element.getBoundingClientRect()
+    clientRect = element.getBoundingClientRect()
     if window.innerWidth > 768:
-        element.style.height = f'{window.innerHeight - client_rect.top}px'
+        element.style.height = f'{window.innerHeight - clientRect.top}px'
     else:
         element.style.height = 'auto'
 
