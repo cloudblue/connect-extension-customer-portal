@@ -15,21 +15,11 @@ components:
   - {property: text, code: 'self.item[''id'']'}
   event_bindings: {}
 - type: Label
-  properties: {role: chip, align: left, tooltip: '', border: '', foreground: '', visible: true,
-    text: Active, font_size: null, font: '', spacing_above: small, icon_align: left,
-    spacing_below: small, italic: false, background: '', bold: false, underline: false,
-    icon: ''}
-  name: subscription_status
-  layout_properties: {column: EIJVAQ}
-  data_bindings:
-  - {property: text, code: 'self.item[''status'']'}
-  event_bindings: {}
-- type: Label
   properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
     text: '', font_size: 14, font: '', spacing_above: small, icon_align: left, spacing_below: small,
     italic: false, background: '', bold: false, underline: false, icon: ''}
   name: external_id
-  layout_properties: {column: ZFRLSM}
+  layout_properties: {column: EIJVAQ}
   data_bindings:
   - {property: text, code: 'self.item[''external_id'']'}
   event_bindings: {}
@@ -41,6 +31,16 @@ components:
   name: view_details
   layout_properties: {column: VBEXZA}
   event_bindings: {click: view_details_click}
+- type: Label
+  properties: {role: chip, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Active, font_size: null, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: subscription_status
+  layout_properties: {column: ZFRLSM}
+  data_bindings:
+  - {property: text, code: 'self.item[''status'']'}
+  event_bindings: {}
 is_package: true
 custom_component: true
 events:

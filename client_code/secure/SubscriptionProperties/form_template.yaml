@@ -1,0 +1,49 @@
+container:
+  type: ColumnPanel
+  event_bindings: {}
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: none, spacing_above: medium, col_widths: '', spacing_below: medium,
+    background: ''}
+components:
+- type: Label
+  properties: {role: table-title, align: left, tooltip: '', border: '', foreground: '',
+    visible: true, text: Subscription Properties, font_size: null, font: '', spacing_above: none,
+    icon_align: left, spacing_below: none, italic: false, background: 'theme:Gray
+      350', bold: false, underline: false, icon: ''}
+  name: subscription_properties_label
+  layout_properties:
+    col_widths: {}
+    grid_position: FMSMPK,KVYWXU
+  event_bindings: {}
+- type: DataGrid
+  properties:
+    role: null
+    columns:
+    - {id: IUVRDM, title: Property, data_key: property}
+    - {id: MHLWMD, title: Value, data_key: value}
+    auto_header: true
+    tooltip: ''
+    border: ''
+    foreground: ''
+    rows_per_page: 10
+    visible: true
+    wrap_on: never
+    show_page_controls: true
+    spacing_above: none
+    spacing_below: large
+    background: theme:Gray 300
+  name: subscription_data_grid
+  layout_properties:
+    col_widths: {}
+    grid_position: YKSCSY,EWKNIL
+  components:
+  - type: RepeatingPanel
+    properties: {spacing_above: none, spacing_below: none, item_template: secure.SubscriptionProperties.SubPropertyTemplate}
+    name: sub_property_repeating_panel
+    layout_properties: {}
+    event_bindings: {}
+  event_bindings: {}
+is_package: true
+custom_component: true
+properties:
+- {name: subscription, type: object, default_value: null, default_binding_prop: true}
