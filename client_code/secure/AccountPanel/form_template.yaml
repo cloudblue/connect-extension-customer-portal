@@ -1,0 +1,45 @@
+container:
+  type: ColumnPanel
+  event_bindings: {}
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: mobile, col_spacing: none, spacing_above: none, col_widths: '{"MOFWAN":20,"GMHMXY":70}',
+    spacing_below: none, background: ''}
+components:
+- type: ColumnPanel
+  properties: {role: side-menu, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: none, spacing_above: small, col_widths: '{"KMMLOL":7,"YDPZRP":53}',
+    spacing_below: small, background: ''}
+  name: column_panel_2
+  layout_properties: {grid_position: 'NZEBGM,MOFWAN', full_width_row: true}
+  event_bindings: {}
+  components:
+  - type: Spacer
+    properties: {height: 85}
+    name: spacer_1
+    layout_properties: {grid_position: 'XKBURW,KMMLOL'}
+    event_bindings: {}
+  - type: Label
+    properties: {role: null, align: left, tooltip: '', border: '', foreground: '',
+      visible: true, text: Account Details, font_size: 20, font: '', spacing_above: none,
+      icon_align: left, spacing_below: none, italic: false, background: '', bold: true,
+      underline: false, icon: ''}
+    name: label_1
+    layout_properties: {grid_position: 'XKBURW,YDPZRP ECPXKJ,IZVQJR'}
+    event_bindings: {}
+  - type: Button
+    properties: {role: null, align: left, tooltip: '', border: '', enabled: true,
+      foreground: '', visible: true, text: Log out, font_size: 12, font: '', spacing_above: small,
+      icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+      underline: false, icon: 'fa:sign-out'}
+    name: logout_btn
+    layout_properties: {grid_position: 'XKBURW,YDPZRP EQZSLC,EMVOYH', row_background: rahul.mondal@cloudblue.com,
+      full_width_row: true}
+    event_bindings: {click: logout_click}
+- type: form:secure.AccountInfo
+  properties: {}
+  name: account_info
+  layout_properties: {grid_position: 'NZEBGM,GMHMXY', row_background: rahul.mondal@cloudblue.com,
+    full_width_row: true}
+  data_bindings:
+  - {property: account, code: self.item}
+is_package: true

@@ -1,0 +1,412 @@
+container:
+  type: ColumnPanel
+  event_bindings: {}
+  properties: {role: null, tooltip: '', border: '', foreground: '', visible: true,
+    wrap_on: never, col_spacing: huge, spacing_above: small, col_widths: '{"PROTCS":95,"SGYFDZ":5,"BCWWIP":3,"YNPOZM":57,"JGKLFF":3,"YYKSXC":27,"ANZGSI":30,"XMNJZN":3,"MBKVDG":27,"PCHATV":30,"ZGVJXC":3,"GXZLDV":57,"SLCUBU":3,"BJKHYQ":27,"PJJCGI":30,"JTDQBB":3,"WYHPUA":57,"HMUDMS":3,"LEJVNW":27,"ENYSCQ":30,"QWDWRE":3,"DRSLJM":27,"ACPOEW":30,"NFUNKU":3,"XXODPM":27,"OCDDTU":30}',
+    spacing_below: small, background: 'theme:White'}
+components:
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_9
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS AXLZSB,BCWWIP'}
+  event_bindings: {}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: General, font_size: 14, font: '', spacing_above: small, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: true, underline: false,
+    icon: ''}
+  name: general_label
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS AXLZSB,YNPOZM'}
+  event_bindings: {}
+- type: Spacer
+  properties: {height: 5}
+  name: spacer_1
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS BIZXOU,JTCKPU'}
+  event_bindings: {}
+- type: Spacer
+  properties: {height: 38}
+  name: spacer_11
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS SPHHEG,JGKLFF'}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: First Name, font_size: 12, font: '', spacing_above: none,
+    icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: firstname_lbl
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS SPHHEG,YYKSXC XCENZH,WEGLMA'}
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: firstname_txt
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS SPHHEG,YYKSXC IYPXIB,SXJSBX'}
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''contact_info''][''contact''][''first_name'']',
+    writeback: false}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: Last Name, font_size: 12, font: '', spacing_above: none,
+    icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: lastname_lbl
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS SPHHEG,ANZGSI BODTAW,QAZROU'}
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: small, italic: false,
+    background: '', bold: false, underline: false}
+  name: lastname_txt
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS SPHHEG,ANZGSI VIYXRV,QNDACX'}
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''contact_info''][''contact''][''last_name'']',
+    writeback: false}
+- type: Spacer
+  properties: {height: 5}
+  name: spacer_2
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS UOEABP,BCCVAD
+  event_bindings: {}
+- type: Spacer
+  properties: {height: 41}
+  name: spacer_12
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS SWXJCW,XMNJZN'}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Email, font_size: 12, font: '', spacing_above: none, icon_align: left, spacing_below: none,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: email_lbl
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS SWXJCW,MBKVDG ACEXRZ,UUPUZS'}
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
+    background: '', bold: false, underline: false}
+  name: email_txt
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS SWXJCW,MBKVDG RGFEXQ,BMJRVS'}
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''contact_info''][''contact''][''email'']',
+    writeback: false}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Phone, font_size: 12, font: '', spacing_above: none, icon_align: left, spacing_below: none,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: phone_lbl
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS SWXJCW,PCHATV YQYRJA,EBXNWD'}
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
+    background: '', bold: false, underline: false}
+  name: phone_txt
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS SWXJCW,PCHATV QJCHDU,AMLVIB'}
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''phone'']', writeback: true}
+- type: Spacer
+  properties: {height: 5}
+  name: spacer_3
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS EDCEUX,EIOUAL
+  event_bindings: {}
+- type: Spacer
+  properties: {height: 33}
+  name: spacer_13
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS YRCGXV,ZGVJXC'}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Company, font_size: 12, font: '', spacing_above: none, icon_align: left,
+    spacing_below: none, italic: false, background: '', bold: false, underline: false,
+    icon: ''}
+  name: company_lbl
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS YRCGXV,GXZLDV BPHIEX,EQEMDM'}
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
+    background: '', bold: false, underline: false}
+  name: company_txt
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS YRCGXV,GXZLDV NCDBED,ELUNDS'}
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''name'']', writeback: true}
+- type: Spacer
+  properties: {height: 5}
+  name: spacer_4
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS XTMJEP,JKDXMU
+  event_bindings: {}
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_14
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS ICPBXQ,SLCUBU'}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'Tier Account ID
+
+      ', font_size: 12, font: '', spacing_above: none, icon_align: left, spacing_below: none,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: tier_id_lbl
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS ICPBXQ,BJKHYQ DIJWAE,UMAYKR
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: large, italic: false,
+    background: '', bold: false, underline: false}
+  name: tier_id_txt
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS ICPBXQ,BJKHYQ WLAAPM,HMOTPU
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''id'']', writeback: true}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: 'External ID
+
+      ', font_size: 12, font: '', spacing_above: none, icon_align: left, spacing_below: none,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: external_id_lbl
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS ICPBXQ,PJJCGI OTASPI,DQCWTM
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: large, italic: false,
+    background: '', bold: false, underline: false}
+  name: external_id_txt
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS ICPBXQ,PJJCGI DPEHWB,RFYONW
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''external_id'']', writeback: true}
+- type: Spacer
+  properties: {visible: true, spacing_above: none, spacing_below: none, height: '1',
+    tooltip: ''}
+  name: spacer_5
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS TBCNHX,RNDGWK
+    full_width_row: true
+    row_background: theme:Gray 300
+  event_bindings: {}
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_15
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS UHLZXN,JTDQBB'}
+  event_bindings: {}
+- type: Label
+  properties: {role: null, align: left, tooltip: '', border: '', foreground: '', visible: true,
+    text: Address, font_size: 14, font: '', spacing_above: large, icon_align: left,
+    spacing_below: small, italic: false, background: '', bold: true, underline: false,
+    icon: ''}
+  name: account_label
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS UHLZXN,WYHPUA
+  event_bindings: {}
+- type: Spacer
+  properties: {height: 5}
+  name: spacer_6
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS VFSRZJ,WDMZBB
+  event_bindings: {}
+- type: Spacer
+  properties: {height: 46}
+  name: spacer_16
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS QPADFR,HMUDMS'}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: Address Line 1, font_size: 12, font: '', spacing_above: none,
+    icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: add_line1_lbl
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS QPADFR,LEJVNW PJLGHC,YZZPJZ
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
+    background: '', bold: false, underline: false}
+  name: add_line_1_txt
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS QPADFR,LEJVNW KZAHVU,TNXFUR
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''contact_info''][''address_line1'']', writeback: true}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: Address Line 2, font_size: 12, font: '', spacing_above: none,
+    icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: add_line_2_lbl
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS QPADFR,ENYSCQ OQBWNE,KCVQOZ
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
+    background: '', bold: false, underline: false}
+  name: add_line_2_txt
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS QPADFR,ENYSCQ RZAVYS,SUJJOG
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''contact_info''][''address_line2'']', writeback: true}
+- type: Spacer
+  properties: {height: 5}
+  name: spacer_7
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS IYQTYI,XWVGTB
+  event_bindings: {}
+- type: Spacer
+  properties: {height: 46}
+  name: spacer_17
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS UNZBSM,QWDWRE'}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: City, font_size: 12, font: '', spacing_above: none,
+    icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: city_lbl
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS UNZBSM,DRSLJM GCWXVN,TFHFZQ
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
+    background: '', bold: false, underline: false}
+  name: city_txt
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS UNZBSM,DRSLJM CFALXH,TGOLQG
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''contact_info''][''city'']', writeback: true}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: State/Provision, font_size: 12, font: '', spacing_above: none,
+    icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: state_lbl
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS UNZBSM,ACPOEW WAXNKT,HXEUKK
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
+    background: '', bold: false, underline: false}
+  name: state_txt
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS UNZBSM,ACPOEW QLNSBW,ONMHKQ
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''contact_info''][''state'']', writeback: true}
+- type: Spacer
+  properties: {height: 5}
+  name: spacer_8
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS DBFOAX,CXAUBK
+  event_bindings: {}
+- type: Spacer
+  properties: {height: 50}
+  name: spacer_18
+  layout_properties: {grid_position: 'BFNNXJ,PROTCS XZLFKY,NFUNKU'}
+  event_bindings: {}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: 'Zip Code
+
+      ', font_size: 12, font: '', spacing_above: none, icon_align: left, spacing_below: none,
+    italic: false, background: '', bold: false, underline: false, icon: ''}
+  name: zip_lbl
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS XZLFKY,XXODPM PTPNZW,IGPYHK
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
+    background: '', bold: false, underline: false}
+  name: zip_txt
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS XZLFKY,XXODPM SQOQBJ,WZPXMU
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''contact_info''][''postal_code'']', writeback: true}
+- type: Label
+  properties: {role: text, align: left, tooltip: '', border: '', foreground: 'theme:Gray
+      600', visible: true, text: Country, font_size: 12, font: '', spacing_above: none,
+    icon_align: left, spacing_below: none, italic: false, background: '', bold: false,
+    underline: false, icon: ''}
+  name: country_lbl
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS XZLFKY,OCDDTU YUVIVC,YDELOL
+  event_bindings: {}
+- type: TextBox
+  properties: {role: null, align: left, hide_text: false, tooltip: '', placeholder: '',
+    border: '', enabled: false, foreground: '', visible: true, text: '', font_size: null,
+    font: '', spacing_above: none, type: text, spacing_below: none, italic: false,
+    background: '', bold: false, underline: false}
+  name: country_txt
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS XZLFKY,OCDDTU IMESCC,MHNDWC
+  event_bindings: {}
+  data_bindings:
+  - {property: text, code: 'self.item[''contact_info''][''country'']', writeback: true}
+- type: Spacer
+  properties: {height: 5}
+  name: spacer_8_copy
+  layout_properties:
+    col_widths: {}
+    grid_position: BFNNXJ,PROTCS VLGQCN,CKUKQR
+- type: Spacer
+  properties: {height: 32}
+  name: spacer_10
+  layout_properties: {grid_position: 'BFNNXJ,SGYFDZ'}
+  event_bindings: {}
+is_package: true
+custom_component: true
+properties:
+- {name: account, type: object, default_value: null, default_binding_prop: true}
