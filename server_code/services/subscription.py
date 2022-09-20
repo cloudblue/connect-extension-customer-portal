@@ -7,9 +7,9 @@ from .utils import handle_response
 
 def invent_inquiring_status(subscription):
     if 'pending_request' in subscription and subscription[
-        'pending_request']['status'] == 'inquiring':
+      'pending_request']['status'] == 'inquiring':
         subscription['status'] = 'inquiring'
-
+    
     return subscription
 
 
@@ -23,6 +23,9 @@ def cache_subscription_data():
 
         accounts = app_tables.accounts.search(user=user)
         tier_ids = [account['tier_id'] for account in accounts]
+
+        if accounts:
+            server.session['account'] = connect_client.get_account(tier_ids[0])
 
         subscriptions = list(connect_client.get_assets_for_customers(tier_ids))
         server.session['subscriptions'] = [invent_inquiring_status(subscription) for subscription in subscriptions]
@@ -48,9 +51,20 @@ def list_products():
 
 @server.callable(require_user=True)
 @handle_response
+def get_account():
+    account = server.session['account']
+    
+    if account:
+        return account
+    else:
+        raise Exception('Unable to fetch account information.')
+
+
+@server.callable(require_user=True)
+@handle_response
 def list_product_actions(product_id):
     connect_client = ConnectClient()
-
+    
     actions = list(connect_client.get_product_subscription_actions(product_id))
 
     if actions:

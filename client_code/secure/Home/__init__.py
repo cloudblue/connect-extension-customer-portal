@@ -1,10 +1,11 @@
 from ._anvil_designer import HomeTemplate
+from ..AccountPanel import AccountPanel
 from ..ProductList import ProductList
 
 from anvil import ColumnPanel, alert, open_form
 from anvil.js import window
-from anvil.users import logout
 
+from ...scripts.client import get_account
 from ...scripts.view import fix_height_to_window_end, set_opacity
 
 
@@ -21,8 +22,10 @@ class Home(HomeTemplate):
             col_spacing=None,
         )
         self.add_component(self.content_panel)
+
         self.product_list_panel = ProductList(self.content_panel)
         self.content_panel.product_detail_panel = None
+        self.account_panel = None
 
         self.content_panel.add_component(
             self.product_list_panel,
@@ -42,19 +45,17 @@ class Home(HomeTemplate):
             full_width_row=True,
         )
 
-    def logout_click(self, **event_args):
-        result = alert(
-            content="You will be logged out immediately. Are you sure?",
-            title="Logout",
-            buttons=[
-                ("Yes", "YES"),
-                ("Cancel", "NO"),
-            ],
-        )
-
-        if result == 'YES':
-            logout()
-            open_form('Login')
-
     def form_show(self, **event_args):
         set_opacity('grecaptcha-badge', 0)
+
+    def settings_lnk_click(self, **event_args):
+        self.content_panel.clear()
+
+        if not self.account_panel:
+            self.account_panel = AccountPanel()
+            self.account_panel.item = get_account()
+
+        self.content_panel.add_component(
+            self.account_panel,
+            full_width_row=True,
+        )
