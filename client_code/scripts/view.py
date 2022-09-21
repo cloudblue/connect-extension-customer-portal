@@ -21,7 +21,7 @@ def is_handheld():
 def __set_element_height_to_window_end(self, element):
     clientRect = element.getBoundingClientRect()
     if window.innerWidth > 768:
-        element.style.height = f'{window.innerHeight - clientRect.top}px'
+        element.style.height = f'{window.innerHeight - clientRect.top - 5}px'
     else:
         element.style.height = 'auto'
 

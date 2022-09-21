@@ -35,7 +35,7 @@ components:
   event_bindings: {}
   components:
   - type: form:secure.ActiveSubscriptionOptions
-    properties: {subscription_id: '', product_id: '', extend_height_to_page_end: null}
+    properties: {subscription_id: '', product_id: '', extend_height_to_page_end: true}
     name: active_subscription_options
     layout_properties: {grid_position: 'VATRGG,NKEPHJ', full_width_row: true}
     event_bindings: {action_click: active_subscription_options_action_click}
