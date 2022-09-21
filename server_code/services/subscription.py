@@ -107,18 +107,22 @@ def list_product_subscriptions(product_id):
 @handle_response
 def get_activation_template(subscription_id):
     connect_client = ConnectClient()
-    activation_template = None
-    # activation_template = connect_client.get_subscription_template(subscription_id) New Implementation
-
-    last_approved_request = connect_client.get_last_transition_asset_request(subscription_id)
-
-    if last_approved_request:
-        if last_approved_request['status'] == 'inquiring':
-            activation_template = last_approved_request.get('template').get('message')
-        else:
-            activation_template = last_approved_request.get('activation_key')
+    subscription = next(
+        filter(
+            lambda s: s['id'] == subscription_id,
+            server.session['subscriptions'],
+        ),
+    )
+    if 'pending_request' in subscription:
+        activation_template = connect_client.get_subscription_request_template(
+            subscription['pending_request']['id'],
+        )
+    else:
+        activation_template = connect_client.get_subscription_template(
+            subscription_id,
+        )
 
     if activation_template:
-        return activation_template
+        return activation_template.decode('utf-8')
     else:
         raise Exception('Subscription template is not available! Try again later.')

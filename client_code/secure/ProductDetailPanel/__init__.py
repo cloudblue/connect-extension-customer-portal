@@ -1,12 +1,9 @@
 from ._anvil_designer import ProductDetailPanelTemplate
-from ..ProductMenuItem import ProductMenuItem
 from ..SubscriptionDetailPanel import SubscriptionDetailPanel
-from ..SubscriptionList import SubscriptionList
 from ...scripts.client import list_product_subscriptions
 from ...scripts.view import (
-    add_class,
+    fix_height_to_window_end,
     is_handheld,
-    set_com_height_to_window_end,
 )
 
 
@@ -22,12 +19,12 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
 
     def is_multi_subscription(self):
         return len(self.product_subscription_map[self.selected_product['id']]) > 1
-    
+
     def update_top_panel(self, product):
         self.product_details.item = product
         self.subscription_short.product_id = product['id']
         self.subscription_short.subscription = self.selected_subscription
-        
+
         if is_handheld():
             self.subscription_short.align = 'left'
 
@@ -43,6 +40,7 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
 
         if subscriptions:
             self.ccp_container.clear()
+            self.ccp_container.visible = True
             if len(subscriptions) == 1:
                 self.subscription_list.visible = False
                 self.selected_subscription = subscriptions[0]
@@ -57,10 +55,12 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
                 )
             else:
                 self.selected_subscription = None
+                self.ccp_container.visible = False
                 self.subscription_list.visible = True
                 self.subscription_list.subscriptions = subscriptions
 
         self.update_top_panel(product)
+        fix_height_to_window_end('fix-height')
 
     def __init__(self, page, product, product_list, **properties):
         self.selected_product = product
@@ -69,6 +69,7 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
         self.product_list = product_list
         self.page = page
         self.subscription_list.visible = False
+        self.ccp_container.visible = False
 
         # Set Form properties and Data Bindings.
         self.init_components(**properties)
@@ -76,10 +77,9 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
         # Any code you write here will run when the form opens.
         self.select_product(product)
 
-        add_class(self.ccp_container, 'fix-height')
-
     def show_subscription_detail(self, subscription, **event_args):
         self.subscription_list.visible = False
+        self.ccp_container.visible = True
         self.selected_subscription = subscription
 
         self.ccp_container.clear()
@@ -94,3 +94,4 @@ class ProductDetailPanel(ProductDetailPanelTemplate):
         )
 
         self.update_top_panel(self.selected_product)
+        fix_height_to_window_end('fix-height')

@@ -1,6 +1,6 @@
 container:
   type: ColumnPanel
-  properties: {role: fix-height, tooltip: '', border: '', foreground: '', visible: true,
+  properties: {tooltip: '', border: '', foreground: '', visible: true,
     wrap_on: never, col_spacing: medium, spacing_above: large, col_widths: '{"BGYWBK":3,"IDXDXH":57}',
     spacing_below: small, background: ''}
   event_bindings: {show: form_show}

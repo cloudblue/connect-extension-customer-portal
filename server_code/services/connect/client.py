@@ -22,18 +22,21 @@ class ConnectClient:
     def get_assets_for_customers(self, customer_list):
         return self.client.assets.filter(
             f"in(tiers.customer.id,({','.join(customer_list)}))",
-            f'ne(status,draft)',
+            'ne(status,draft)',
         ).select(
             '-params',
             '-tiers',
             '-configuration',
-            #'+pending_request',
+            '+pending_request',
         )
 
     def get_product_list(self, product_id_list):
         return self.client.products.filter(
             f"in(id,({','.join(product_id_list)}))",
         ).order_by('name')
+
+    def get_subscription(self, subscription_id):
+        return self.client.assets[subscription_id].get()
 
     def get_product_subscription_actions(self, product_id):
         return self.client.products[product_id].actions.filter(
@@ -50,6 +53,9 @@ class ConnectClient:
 
     def get_subscription_template(self, asset_id):
         return self.client.assets[asset_id]('render').get()
+
+    def get_subscription_request_template(self, request_id):
+        return self.client.requests[request_id]('render').get()
     
     def get_last_transition_asset_request(self, asset_id):
         return self.client.requests.filter(
