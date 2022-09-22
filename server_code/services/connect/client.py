@@ -21,8 +21,8 @@ class ConnectClient:
 
     def get_assets_for_customers(self, customer_list):
         return self.client.assets.filter(
-            f"in(tiers.customer.id,({','.join(customer_list)}))",
-            'ne(status,draft)',
+            R().tiers.customer.id.oneof(customer_list),
+            R().status.ne('draft'),
         ).select(
             '-params',
             '-tiers',
@@ -32,7 +32,7 @@ class ConnectClient:
 
     def get_product_list(self, product_id_list):
         return self.client.products.filter(
-            f"in(id,({','.join(product_id_list)}))",
+            R().id.oneof(product_id_list),
         ).order_by('name')
 
     def get_subscription(self, subscription_id):
@@ -56,14 +56,3 @@ class ConnectClient:
 
     def get_subscription_request_template(self, request_id):
         return self.client.requests[request_id]('render').get()
-    
-    def get_last_transition_asset_request(self, asset_id):
-        return self.client.requests.filter(
-            R().asset.id.eq(asset_id),
-            status__in=('approved', 'inquiring', 'pending', 'tiers_setup'),
-        ).select(
-            '-asset.items',
-            '-asset.params',
-            '-asset.tiers',
-            '-asset.configuration',
-        ).order_by('-created').limit(1).first()
