@@ -27,6 +27,3 @@ services:
     volumes:
       - .:/app
       - ./anvil-data:/anvil-data
-    environment:
-      MODE: local
-      POSTGRES_DB: usage
