@@ -13,8 +13,8 @@ services:
       POSTGRES_DB: customer
 
   app:
-    container_name: extension-customerportal
-    image: extension-customerportal
+    container_name: extension-customer-portal
+    image: extension-customer-portal
     user: anvil
     build:
       context: .
