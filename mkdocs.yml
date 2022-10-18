@@ -1,0 +1,44 @@
+site_name: Connect Customer Portal Extension
+site_url: https://github.com/cloudblue/connect-extension-customer-portal
+repo_name: cloudblue/connect-extension-customer-portal
+repo_url: https://github.com/cloudblue/connect-extension-customer-portal
+edit_uri: ""
+copyright: Copyright &copy; 2022 Ingram Micro. All Rights Reserved.
+extra:
+  generator: false
+extra_css:
+  - css/custom.css
+theme:
+  name: 'material'
+  logo: logo_full.png
+  favicon: favicon.ico
+  palette:
+    - scheme: 'default'
+      media: '(prefers-color-scheme: light)'
+      toggle:
+        icon: 'material/lightbulb'
+        name: "Switch to dark mode"
+    - scheme: 'slate'
+      media: '(prefers-color-scheme: dark)'
+      primary: 'blue'
+      toggle:
+        icon: 'material/lightbulb-outline'
+        name: 'Switch to light mode'
+
+markdown_extensions:
+  - mkautodoc
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+    - Home: index.md
+    - Getting started:
+        - Deployment: deployment.md
+        - Configurations: configuration.md
+        - Recaptcha: recaptcha.md
+    - API reference:
+        - Custom Components: components.md
+        - Utilities: utilities.md
